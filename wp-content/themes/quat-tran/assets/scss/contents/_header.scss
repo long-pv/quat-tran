@@ -1,31 +1,37 @@
 .header {
     width: 100%;
     z-index: 9999;
-    background-color: #ffffff;
+    background-color: $primary;
     box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.16);
     -webkit-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.16);
     -moz-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.16);
     position: fixed;
     top: 0px;
-    background-color: $white;
 
     &__inner {
-        padding: 8px 0px;
 
-        @include media-breakpoint-up(xl) {
-            padding: 16px 0px;
-        }
+
+        padding: 0px;
     }
 
     &__logo {
         display: inline-flex;
         height: 100%;
         align-items: center;
+        padding: 8px 0px;
+
+        @include media-breakpoint-up(lg) {
+            padding: 12px 0px;
+        }
 
         img {
-            height: 40px;
+            height: 30px;
             width: auto;
             max-width: 100%;
+
+            @include media-breakpoint-up(lg) {
+                height: 40px;
+            }
         }
     }
 
@@ -36,7 +42,7 @@
         height: 100%;
         gap: 10px;
 
-        @include media-breakpoint-up(xl) {
+        @include media-breakpoint-up(lg) {
             gap: 16px;
         }
     }
@@ -44,12 +50,12 @@
     &__menupc {
         display: none;
 
-        @include media-breakpoint-up(xl) {
+        @include media-breakpoint-up(lg) {
             display: block !important;
             height: 100%;
         }
 
-        $margin_menu_pc: 12px;
+        $margin_menu_pc: 16px;
 
         ul.menu {
             margin: 0px;
@@ -57,27 +63,36 @@
             list-style-type: none;
             margin-left: - $margin_menu_pc;
             margin-right: - $margin_menu_pc;
+            height: 100%;
+            display: flex;
+            align-items: center;
 
             a {
                 text-decoration: none !important;
-                color: $primary;
+                color: $white;
 
                 &:hover {
-                    color: $secondary !important;
+                    color: $primary !important;
+                    background-color: $info;
                 }
             }
 
             &>li {
                 position: relative;
-                display: inline-block;
+                display: inline-flex;
+                height: 100%;
 
                 &>a {
                     text-decoration: none;
-                    display: block;
-                    color: $primary;
+                    color: $white !important;
                     padding: 12px $margin_menu_pc;
                     font-size: 14px;
-                    font-weight: 500;
+                    font-weight: 700;
+                    height: 100%;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
                 }
 
                 // active current
@@ -85,7 +100,8 @@
                 &.current-menu-item,
                 &.current_page_item {
                     &>a {
-                        color: $secondary;
+                        color: $primary !important;
+                        background-color: $info !important;
                     }
                 }
 
@@ -95,7 +111,7 @@
                     list-style-type: none;
                     padding: 0px;
                     margin: 0px;
-                    width: 280px;
+                    width: 220px;
                     left: 0px;
                     top: 200%;
                     height: 0px;
@@ -112,16 +128,23 @@
                             display: block;
                             background: $white;
                             transition: all 0.3s;
-                            color: $primary;
+                            color: #333333;
                             padding: 12px $margin_menu_pc;
                             font-size: 14px;
+                            font-weight: 600;
+
+                            &:hover {
+                                color: $primary !important;
+                                background-color: $info;
+                            }
                         }
 
                         &.current-menu-parent,
                         &.current-menu-item,
                         &.current_page_item {
                             &>a {
-                                color: $secondary !important;
+                                color: $primary !important;
+                                background-color: $info;
                             }
                         }
                     }
@@ -142,12 +165,15 @@
                 }
 
                 &.menu-item-has-children {
-                    padding-right: 4px;
+
+                    &>a {
+                        padding-right: 24px;
+                    }
 
                     &::before {
                         content: '';
                         position: absolute;
-                        right: 0px;
+                        right: 6px;
                         top: 50%;
                         transform: translateY(-50%);
                         width: 12px;
@@ -168,7 +194,7 @@
         height: 100%;
         align-items: center;
 
-        @include media-breakpoint-up(xl) {
+        @include media-breakpoint-up(lg) {
             display: none;
         }
     }
@@ -182,12 +208,12 @@
         display: flex;
 
         &--open {
-            background-image: url("data:image/svg+xml,%3Csvg width='21' height='14' viewBox='0 0 21 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.875 1.07812H19.4723' stroke='%23333333' stroke-width='2' stroke-linecap='round' /%3E%3Cpath d='M1.875 6.74219H19.4723' stroke='%23333333' stroke-width='2' stroke-linecap='round' /%3E%3Cpath d='M1.875 12.4023H19.4723' stroke='%23333333' stroke-width='2' stroke-linecap='round' /%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='21' height='14' viewBox='0 0 21 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.875 1.07812H19.4723' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' /%3E%3Cpath d='M1.875 6.74219H19.4723' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' /%3E%3Cpath d='M1.875 12.4023H19.4723' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' /%3E%3C/svg%3E");
         }
 
         &--close {
             display: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 6L6 18' stroke='%23333333' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3Cpath d='M6 6L18 18' stroke='%23333333' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 6L6 18' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3Cpath d='M6 6L18 18' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
         }
     }
 
@@ -214,7 +240,7 @@
             width: 35%;
         }
 
-        @include media-breakpoint-up(xl) {
+        @include media-breakpoint-up(lg) {
             display: none;
         }
 
@@ -228,6 +254,7 @@
             padding: 0px;
             margin: 0px;
             list-style-type: none;
+            height: 100%;
 
             &>li {
                 border-bottom: 1px solid #c0c0c0;

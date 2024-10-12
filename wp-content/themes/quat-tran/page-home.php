@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template name: Home
  * The template for displaying all pages
  *
  * This is the template that displays all pages by default.
@@ -15,9 +16,10 @@
 get_header();
 ?>
 
-<?php
-the_content();
-?>
+<div class="container">
+    <h1>trang chủ</h1>
+</div>
+
 
 <?php
 get_footer();

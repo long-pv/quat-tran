@@ -12,48 +12,81 @@
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
+
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<!-- fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet" />
 
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'quat-tran' ); ?></a>
+	<?php
+	// hook body content
+	wp_body_open();
+	?>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$quat_tran_description = get_bloginfo( 'description', 'display' );
-			if ( $quat_tran_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $quat_tran_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	<header id="header" class="header">
+		<div class="container">
+			<div class="header__inner">
+				<div class="row no-gutters">
+					<div class="col-6 col-xl-3">
+						<a href="<?php echo home_url(); ?>" class="header__logo">
+							<?php $logo_url = get_template_directory_uri() . '/assets/images/logo_white.svg'; ?>
+							<img src="<?php echo $logo_url; ?>" alt="logo">
+						</a>
+					</div>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'quat-tran' ); ?></button>
+					<div class="col-6 col-xl-9">
+						<div class="header__navInner">
+							<!-- menu PC -->
+							<?php
+							if (has_nav_menu('menu-1')) {
+								wp_nav_menu(
+									array(
+										'theme_location' => 'menu-1',
+										'container' => 'nav',
+										'container_class' => 'header__menupc',
+										'depth' => 2,
+									)
+								);
+							}
+							?>
+							<!-- end -->
+
+							<!-- button toggle menu mobile -->
+							<div class="header__toggle">
+								<span class="header__toggleItem header__toggleItem--open"></span>
+								<span class="header__toggleItem header__toggleItem--close"></span>
+							</div>
+							<!-- end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- menu Mobile -->
+		<div class="header__menusp">
 			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
+			if (has_nav_menu('menu-1')) {
+				wp_nav_menu(
+					array(
+						'theme_location' => 'menu-1',
+						'container' => 'nav',
+						'container_class' => 'header__menuspInner',
+						'depth' => 2,
+					)
+				);
+			}
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		</div>
+	</header>
+
+	<main class="mainBodyContent">
