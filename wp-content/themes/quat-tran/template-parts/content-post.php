@@ -39,13 +39,13 @@ $categories = get_the_category($post_id);
 						?>
 						<div class="post_cat">
 							<span class="icon">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
 									<path fill="#1a3865"
-										d="M448 480L64 480c-35.3 0-64-28.7-64-64L0 192l512 0 0 224c0 35.3-28.7 64-64 64zm64-320L0 160 0 96C0 60.7 28.7 32 64 32l128 0c20.1 0 39.1 9.5 51.2 25.6l19.2 25.6c6 8.1 15.5 12.8 25.6 12.8l160 0c35.3 0 64 28.7 64 64z" />
+										d="M0 80L0 229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7L48 32C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
 								</svg>
 							</span>
 
-							<a href="<?php echo get_category_link($first_category->term_id) ?>" class="text">
+							<a href="<?php echo get_category_link($first_category->term_id); ?>" class="text">
 								<?php echo $first_category->name; ?>
 							</a>
 						</div>

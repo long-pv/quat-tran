@@ -189,9 +189,13 @@ function wp_breadcrumbs()
 			case is_single() && !is_attachment():
 				$post_type = $post->post_type;
 
-				$id_page = get_field('br_' . $post_type, 'option') ?? null;
-				if ($id_page) {
-					echo '<a href="' . get_permalink($id_page) . '">' . get_the_title($id_page) . '</a>' . $delimiter . ' ';
+				if ($post_type == 'post') {
+					$categories = get_the_category($post->ID);
+
+					if (!empty($categories)) {
+						$first_category = $categories[0];
+						echo '<a href="' . get_category_link($first_category->term_id) . '">' . $first_category->name . '</a>' . $delimiter . ' ';
+					}
 				}
 
 				echo $before . $post->post_title . $after;
