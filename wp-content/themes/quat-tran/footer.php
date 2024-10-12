@@ -8,16 +8,144 @@
  *
  * @package quat-tran
  */
-
 ?>
+
 </main>
 <!-- end main body -->
 
-<!-- footer -->
-<footer id="footer" class="footer secSpace">
+<!-- Footer -->
+<?php $footer = get_field('footer', 'option') ?? null;
+if ($footer):
+    ?>
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__item">
+                        <a href="#" class="footer__logo">
+                            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo_white.svg'; ?>"
+                                alt="logo">
+                        </a>
+                        <?php if (!empty($footer['tieu_de'])): ?>
+                            <h3 class="footer__item--title"><?php echo $footer['tieu_de']; ?></h3>
+                        <?php endif; ?>
+                        <?php if (!empty($footer['mo_ta'])): ?>
+                            <div class="footer__desc">
+                                <?php echo $footer['mo_ta']; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="footer__item">
+                                <?php if (!empty($footer['tieu_de_2'])): ?>
+                                    <h3 class="footer__item--title"><?php echo $footer['tieu_de_2']; ?></h3>
+                                <?php endif; ?>
+                                <?php
+                                if (has_nav_menu('footer-1')) {
+                                    wp_nav_menu(
+                                        array(
+                                            'theme_location' => 'footer-1',
+                                            'container' => 'nav',
+                                            'container_class' => 'footer__nav',
+                                            'depth' => 1,
+                                        )
+                                    );
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="footer__item">
+                                <?php if (!empty($footer['tieu_de_3'])): ?>
+                                    <h3 class="footer__item--title"><?php echo $footer['tieu_de_3']; ?></h3>
+                                <?php endif; ?>
+                                <div class="information">
+                                    <div class="information__item">
+                                        <div class="text">
+                                            <p>Mua Hàng: 09.1102.1102 </p>
+                                            <p>Thắc mắc khiếu nại: 090.234.8 886</p>
+                                            <p>Bảo hành: 096.234.8886</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Socials -->
+                                <?php $contact_info = get_field('social', 'option') ?? null;
+                                if ($contact_info): ?>
+                                    <div class="socials">
+                                        <?php if (!empty($contact_info['facebook'])): ?>
+                                            <a href="<?php echo $contact_info['facebook']; ?>" target="_blank">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/images/socials/face_icon.png'; ?>"
+                                                    alt="Facebook">
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($contact_info['zalo'])): ?>
+                                            <a target="_blank" href="<?php echo $contact_info['zalo']; ?>">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/images/socials/zalo_icon.png'; ?>"
+                                                    alt="Zalo">
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($contact_info['youtube'])): ?>
+                                            <a target="_blank" href="<?php echo $contact_info['youtube']; ?>">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/images/socials/youtube_icon.png'; ?>"
+                                                    alt="Youtube">
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($contact_info['instagram'])): ?>
+                                            <a target="_blank" href="<?php echo $contact_info['instagram']; ?>">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/images/socials/instagram.png'; ?>"
+                                                    alt="Instagram">
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($contact_info['tiktok'])): ?>
+                                            <a target="_blank" href="<?php echo $contact_info['tiktok']; ?>">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/images/socials/tiktok.png'; ?>"
+                                                    alt="Tiktok">
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($contact_info['bo_cong_thuong'])): ?>
+                                            <a target="_blank" href="<?php echo $contact_info['bo_cong_thuong']; ?>">
+                                                <img src="<?php echo get_template_directory_uri() . '/assets/images/socials/website-bo-cong-thuong.png'; ?>"
+                                                    alt="website quạt đăng ký bộ công thương">
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                                <!-- / Socials -->
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="footer__item">
+                                <?php if (!empty($footer['tieu_de_4'])): ?>
+                                    <h3 class="footer__item--title"><?php echo $footer['tieu_de_4']; ?></h3>
+                                <?php endif; ?>
+                                <?php if (!empty($footer['anh_tru_so'])): ?>
+                                    <div class="footer__item--linkFb">
+                                        <a href="https://www.facebook.com/">
+                                            <div class="image__inner">
+                                                <img src=" <?php echo $footer['anh_tru_so']; ?>" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-</footer>
-<!-- end footer -->
+        <?php if (isset($contact_info['copyright'])): ?>
+            <div class="footer__copyright">
+                <?php echo $contact_info['copyright']; ?>
+            </div>
+        <?php endif; ?>
+        </div>
+    </footer>
+<?php endif; ?>
+<!-- / Footer -->
 
 <?php wp_footer(); ?>
 

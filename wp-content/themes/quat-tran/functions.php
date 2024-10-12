@@ -71,6 +71,9 @@ function quat_tran_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'quat-tran'),
+
+			//
+			'footer-1' => esc_html__('Primary-1', 'quat-tran'),
 		)
 	);
 
