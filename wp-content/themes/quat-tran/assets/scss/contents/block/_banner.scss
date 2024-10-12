@@ -1,0 +1,21 @@
+.sectionBanner {
+	&__item {
+		position: relative;
+		// min-height: 400px;
+
+		// @include media-breakpoint-up(lg) {
+		// 	min-height: 550px;
+		// }
+	}
+
+	&__itemImg {
+		// position: absolute;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+}
+
+.slick-slider {
+	margin: 0px;
+}

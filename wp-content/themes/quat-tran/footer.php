@@ -136,16 +136,40 @@ if ($footer):
                 </div>
             </div>
         </div>
-
-        <?php if (isset($contact_info['copyright'])): ?>
-            <div class="footer__copyright">
-                <?php echo $contact_info['copyright']; ?>
-            </div>
-        <?php endif; ?>
-        </div>
     </footer>
 <?php endif; ?>
 <!-- / Footer -->
+
+<!-- Contact -->
+<div class="supports">
+    <ul class="clearfix">
+        <li>
+            <a target="_blank" href="http://m.me/quattranMrVu" data-wpel-link="external"
+                rel="nofollow external noopener noreferrer"><i class="icon icon_mess"></i></a>
+        </li>
+        <li>
+            <a target="_blank" href="http://zalo.me/09.1102.1102" data-wpel-link="external"
+                rel="nofollow external noopener noreferrer"><i class="icon icon_zalo"></i></a>
+        </li>
+    </ul>
+</div>
+<!-- / Contact -->
+
+<!-- callNowButton -->
+<div id="callNowButton" class="fixed_left">
+    <a href="tel:09.1102.1102" class="btc_icon" data-wpel-link="internal"></a>
+    <a href="tel:09.1102.1102" class="btc_text" data-wpel-link="internal"><span>09.1102.1102</span></a>
+</div>
+<!-- / callNowButton -->
+
+<!-- BackToTop -->
+<div id="back-top">
+    <a href="#top">
+        <i class="icon_up"></i>
+        <div>TOP</div>
+    </a>
+</div>
+<!-- / BackToTop -->
 
 <?php wp_footer(); ?>
 
