@@ -11,6 +11,7 @@
 
         &.current {
             color: $primary;
+            font-weight: 500;
         }
     }
 
@@ -19,7 +20,6 @@
 
         @include media-breakpoint-up(lg) {
             &:hover {
-                // color: $secondary;
                 text-decoration: underline;
             }
         }
@@ -36,7 +36,7 @@
             left: 0%;
 
             path {
-                stroke: $success;
+                stroke: $secondary;
             }
         }
     }

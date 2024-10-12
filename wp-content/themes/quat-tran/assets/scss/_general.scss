@@ -4,7 +4,7 @@ body {
     line-height: 1.5;
     color: #333333;
     font-size: 16px;
-    padding-top: 56px;
+    padding-top: 46px;
 
     @include media-breakpoint-down(md) {
         -webkit-touch-callout: none;
@@ -13,9 +13,19 @@ body {
         touch-action: pan-y;
     }
 
-    @include media-breakpoint-up(xl) {
-        padding-top: 72px;
+    @include media-breakpoint-up(lg) {
+        padding-top: 64px;
     }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700 !important;
+    line-height: 1.5 !important;
 }
 
 //------ Typography
@@ -211,4 +221,8 @@ $secSpaceSP: 30px;
         height: 100%;
         border: none;
     }
+}
+
+.mainBodyContent {
+    min-height: calc(100vh - 100px);
 }
