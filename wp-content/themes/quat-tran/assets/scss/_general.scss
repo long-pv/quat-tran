@@ -26,59 +26,59 @@ h6,
 
 h5,
 .h5 {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 h4,
 .h4 {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 h3,
 .h3 {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 h2,
 .h2 {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 h1,
 .h1 {
-    font-size: 32px;
+    font-size: 28px;
 }
 
 @include media-breakpoint-up(lg) {
 
     h6,
     .h6 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     h5,
     .h5 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     h4,
     .h4 {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     h3,
     .h3 {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     h2,
     .h2 {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     h1,
     .h1 {
-        font-size: 40px;
+        font-size: 32px;
     }
 }
 
@@ -90,8 +90,8 @@ h1,
     text-align: justify !important;
 }
 
-$secSpacePC: 48px;
-$secSpaceSP: 32px;
+$secSpacePC: 60px;
+$secSpaceSP: 30px;
 
 .secSpace {
     padding-top: $secSpaceSP;
