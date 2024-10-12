@@ -242,3 +242,45 @@ function generate_page_parent($parent_id, $delimiter)
 
 	return rtrim($output);
 }
+
+function pagination($query = null)
+{
+	global $wp_query;
+	$max_pages = $query ? $query->max_num_pages : $wp_query->max_num_pages;
+
+	echo '<div class="pagination">';
+	echo paginate_links(
+		array(
+			'total' => $max_pages,
+			'current' => max(1, get_query_var('paged')),
+			'end_size' => 2,
+			'mid_size' => 1,
+			'prev_text' => __('Prev', 'quat-tran'),
+			'next_text' => __('Next', 'quat-tran'),
+		)
+	);
+	echo '</div>';
+
+	wp_reset_postdata();
+}
+
+function img_url($img = '', $size = 'medium')
+{
+	$size = strtolower($size);
+
+	if (empty($size) || !in_array($size, ['thumbnail', 'medium', 'large', 'full'])) {
+		$size = 'medium';
+	}
+
+	if (is_array($img) && !empty($img['ID'])) {
+		$url = wp_get_attachment_image_url($img['ID'], $size);
+	} elseif (is_numeric($img)) {
+		$url = wp_get_attachment_image_url($img, $size);
+	} elseif (filter_var($img, FILTER_VALIDATE_URL)) {
+		$id = attachment_url_to_postid($img);
+		$url = $id ? wp_get_attachment_image_url($id, $size) : $img;
+	} else {
+		$url = '';
+	}
+	return $url ?: NO_IMAGE;
+}

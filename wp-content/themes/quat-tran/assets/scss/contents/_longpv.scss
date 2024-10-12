@@ -2,3 +2,82 @@
     margin-bottom: 24px;
     color: $primary;
 }
+
+.category_title {
+    border-bottom: 1px solid $primary;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    color: $primary;
+
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 32px;
+    }
+}
+
+.category_row {
+    row-gap: 20px;
+
+    @include media-breakpoint-up(lg) {
+        row-gap: 30px;
+    }
+}
+
+.singlePost__row {
+    @include media-breakpoint-down(md) {
+        margin-right: -10px;
+        margin-left: -10px;
+
+        &>* {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
+}
+
+.singlePost__content {
+    padding-top: 0px;
+}
+
+.singlePost .imgGroup {
+    padding-bottom: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post_other_info {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+
+    @include media-breakpoint-up(md) {
+        gap: 24px;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.post_date,
+.post_cat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .icon {
+        display: inline-flex;
+
+        svg {
+            width: 16px;
+        }
+    }
+
+    .text {
+        font-size: 12px;
+    }
+}
+
+.post_cat {
+    .text {
+        font-weight: 700;
+        color: $primary !important;
+    }
+}
