@@ -81,3 +81,15 @@
         color: $primary !important;
     }
 }
+
+.latest_post_row {
+    row-gap: 16px;
+
+    @include media-breakpoint-up(lg) {
+        row-gap: 24px;
+    }
+}
+
+.single_post_title {
+    color: $primary;
+}

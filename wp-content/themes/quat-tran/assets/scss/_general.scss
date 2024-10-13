@@ -188,13 +188,17 @@ $secSpaceSP: 30px;
     margin-bottom: 24px;
     position: relative;
 
-    &__title {
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 32px;
+    }
+
+    .secHeading__title {
         margin: 0px;
         color: $primary;
         text-transform: uppercase;
     }
 
-    &__link {
+    .secHeading__link {
         margin-top: 16px;
         color: $primary;
 
