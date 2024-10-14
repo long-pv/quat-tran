@@ -21,4 +21,45 @@
 	if ($("#wpadminbar").length > 0) {
 		$(".header").css("margin-top", $("#wpadminbar").outerHeight(true));
 	}
+
+	// Back to top
+	var backTop = $("#back-top");
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 100) {
+			backTop.fadeIn();
+		} else {
+			backTop.fadeOut();
+		}
+	});
+	backTop.click(function () {
+		$("html, body").animate({ scrollTop: 0 }, 800);
+		return false;
+	});
+
+	// Banner
+	$("#sectionBanner__slider").slick({
+		dots: false,
+		arrows: false,
+		autoplay: true,
+		autoplaySpeed: 5000,
+		adaptiveHeight: true,
+		responsive: [
+			{
+				breakpoint: 992,
+				settings: {
+					dots: false,
+					arrows: false,
+				},
+			},
+		],
+	});
+
+	//
+
+	$(".product-slider").slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
+	});
 })(jQuery, window);
