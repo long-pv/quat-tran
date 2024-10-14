@@ -126,7 +126,7 @@
                             display: block;
                             background: $white;
                             transition: all 0.3s;
-                            color: #333333;
+                            color: $body;
                             padding: 12px $margin_menu_pc;
                             font-size: 14px;
                             font-weight: 600;
@@ -158,7 +158,7 @@
                 &:last-child {
                     &>ul.sub-menu {
                         left: auto;
-                        right: $margin_menu_pc;
+                        right: 0px;
                     }
                 }
 
@@ -275,7 +275,8 @@
                 &.current-menu-item,
                 &.current_page_item {
                     &>a {
-                        color: $secondary !important;
+                        font-weight: 700;
+                        color: $primary !important;
                     }
                 }
 
@@ -295,7 +296,8 @@
                         &.current-menu-item,
                         &.current_page_item {
                             &>a {
-                                color: $secondary !important;
+                                font-weight: 700;
+                                color: $primary !important;
                             }
                         }
                     }

@@ -101,6 +101,10 @@
 
 .dealer_row {
     row-gap: 24px;
+
+    @include media-breakpoint-up(lg) {
+        row-gap: 32px;
+    }
 }
 
 .dealer_title {

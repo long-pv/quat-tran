@@ -5,13 +5,13 @@
 
     a,
     .current {
-        color: $secondary;
+        color: $body;
         font-size: 14px;
         font-weight: 400;
 
         &.current {
             color: $primary;
-            font-weight: 500;
+            font-weight: 700;
         }
     }
 
@@ -36,7 +36,7 @@
             left: 0%;
 
             path {
-                stroke: $secondary;
+                stroke: $body;
             }
         }
     }
