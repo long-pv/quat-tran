@@ -63,16 +63,8 @@ if ($query->have_posts()) {
     echo '<div class="product-slider">';
     while ($query->have_posts()) {
         $query->the_post();
-        global $product;
-        ?>
-        <article class="product-item">
-            <a href="<?php the_permalink(); ?>">
-                <?php the_post_thumbnail(); ?>
-                <h3><?php the_title(); ?></h3>
-                <span><?php echo $product->get_price_html(); ?></span>
-            </a>
-        </article>
-        <?php
+      
+        get_template_part('template-parts/content-product');
     }
     echo '</div>';
 }
