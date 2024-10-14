@@ -1,34 +1,57 @@
 /**
  * Global reset
  */
-@import 'fonts';
-@import 'mixins';
-@import 'variables';
-@import 'bootstrap/bootstrap';
+@import "fonts";
+@import "mixins";
+@import "variables";
+@import "bootstrap/bootstrap";
 //animated
-@import 'animate';
+@import "animate";
 
 // slick
-@import 'slick/slick';
+@import "slick/slick";
 
 //template css
-@import 'general';
-@import 'contents/header';
-@import 'contents/footer';
-@import 'contents/home';
-@import 'contents/slick';
-@import 'contents/pagination';
-@import 'contents/singlePost';
-@import 'contents/breadcrumbs';
-@import 'contents/editor';
-@import 'contents/select_dropdown_by_ul';
-@import 'contents/polylang_dropdown';
-@import 'contents/accordion';
-@import 'contents/select2';
-@import 'contents/modal_video';
-@import 'contents/dataTable';
+@import "general";
+@import "contents/header";
+@import "contents/footer";
+@import "contents/home";
+@import "contents/slick";
+@import "contents/pagination";
+@import "contents/singlePost";
+@import "contents/breadcrumbs";
+@import "contents/editor";
+@import "contents/select_dropdown_by_ul";
+@import "contents/polylang_dropdown";
+@import "contents/accordion";
+@import "contents/select2";
+@import "contents/modal_video";
+@import "contents/dataTable";
 
 // woocommerce
-@import 'woocommerce/index';
+@import "woocommerce/index";
 
-@import 'contents/longpv';
+@import "contents/longpv";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+@import "contents/block/callNowButton";
+@import "contents/block/social";
+@import "contents/block/banner";
+@import "contents/block/product";
