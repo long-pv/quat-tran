@@ -19,6 +19,7 @@ get_header();
 <!-- Banner -->
 <?php
 $banner = get_field('banner');
+
 if ($banner):
     ?>
     <section class="sectionBanner">
@@ -29,8 +30,8 @@ if ($banner):
                     ?>
                     <div>
                         <div class="sectionBanner__item">
-                            <img class="sectionBanner__itemImg" src="<?php echo $item['url']; ?>"
-                                alt="<?php echo $item['title'] ?? 'banner ' . ($index + 1); ?>">
+                            <img class="sectionBanner__itemImg" src="<?php echo img_url($item['banner_image'], 'large'); ?>"
+                                alt="<?php echo 'banner ' . ($index + 1); ?>">
                         </div>
                     </div>
                     <?php
@@ -42,59 +43,51 @@ if ($banner):
 <?php endif; ?>
 <!-- / Banner -->
 
-<!-- Top Product -->
-<section class="sectionTopProduct">
-    <div class="top-product">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <div id="product-item-info-11551" class=" product-item center product-item-info">
-                        <div class="card-body">
-                            <h5 class="cart-title"><a class="titlehover"
-                                    href="https://mrvu-fan.com/quat-tran-trendy.html" data-wpel-link="internal">Quạt
-                                    trần Trendy</a></h5>
-                            <div class="price-product">
+<!-- -->
+<?php
+$args = array(
+    'post_type' => 'product',
+    'posts_per_page' => 10,
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => 'uncategorized',
+        ),
+    ),
+);
 
-                                <div class="price"><span
-                                        class="woocommerce-Price-amount amount"><bdi>7.990.000&nbsp;<span
-                                                class="woocommerce-Price-currencySymbol">₫</span></bdi></span></div>
-                            </div>
-                        </div>
-                        <div class="card-image">
-                            <a href="https://mrvu-fan.com/quat-tran-trendy.html" class="box-img"
-                                data-wpel-link="internal"><img class="product-image-photo"
-                                    src="https://i0.wp.com/mrvu-fan.com/wp-content/uploads/2024/06/quat-tran-canh-go-trendy60koa-jpg.webp?fit=1500%2C1500&amp;ssl=1"
-                                    alt="Quạt trần Trendy"></a>
+$query = new WP_Query($args);
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="secSpace">
-    <div class="container">
-        <div class="secHeading">
-            <h2 class="secHeading__title text-center">
-                Sản phẩm sơn taiko
-            </h2>
-        </div>
-        <?php
-        echo do_shortcode('[products columns="4" limit="6" orderby="date" order="DESC"]');
+if ($query->have_posts()) {
+    echo '<div class="product-slider">';
+    while ($query->have_posts()) {
+        $query->the_post();
+        global $product;
         ?>
-
-        <div class="d-flex justify-content-center pt-4">
-            <a href="<?php echo get_permalink(wc_get_page_id('shop')); ?>" class="btnXemThem">
-                Xem thêm
+        <article class="product-item">
+            <a href="<?php the_permalink(); ?>">
+                <?php the_post_thumbnail(); ?>
+                <h3><?php the_title(); ?></h3>
+                <span><?php echo $product->get_price_html(); ?></span>
             </a>
-        </div>
-    </div>
-</section>
+        </article>
+        <?php
+    }
+    echo '</div>';
+}
 
-<!-- / Top Product -->
+// Reset post data after the query
+wp_reset_postdata();
 
+// Add "View More" button
+$product_count = wp_count_posts('product')->publish;
+if ($product_count > 10) {
+    echo '<a href="' . get_term_link('uncategorized', 'product_cat') . '" class="view-more">Xem thêm</a>';
+}
+
+?>
+<!-- / -->
 
 
 <?php

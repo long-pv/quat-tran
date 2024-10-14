@@ -1,11 +1,13 @@
 .sectionBanner {
 	&__item {
 		position: relative;
-		// min-height: 400px;
+		min-height: 400px;
+		max-height: 600px;
 
-		// @include media-breakpoint-up(lg) {
-		// 	min-height: 550px;
-		// }
+		@include media-breakpoint-up(lg) {
+			min-height: 550px;
+			max-height: 700px;
+		}
 	}
 
 	&__itemImg {

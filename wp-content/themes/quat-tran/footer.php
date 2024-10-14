@@ -17,17 +17,18 @@
 <?php $footer = get_field('footer', 'option') ?? null;
 if ($footer):
     ?>
-    <footer id="footer" class="footer">
+    <footer id="footer" class="footer secSpace">
         <div class="container">
             <div class="row">
+                <div class="col-12 mb-4">
+                    <a href="/" class="footer__logo">
+                        <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.svg'; ?>" alt="logo">
+                    </a>
+                </div>
                 <div class="col-lg-3">
                     <div class="footer__item">
-                        <a href="#" class="footer__logo">
-                            <img src="<?php echo get_template_directory_uri() . '/assets/images/logo_white.svg'; ?>"
-                                alt="logo">
-                        </a>
                         <?php if (!empty($footer['tieu_de'])): ?>
-                            <h3 class="footer__item--title"><?php echo $footer['tieu_de']; ?></h3>
+                            <h3 class="footer__item--title h4"><?php echo $footer['tieu_de']; ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($footer['mo_ta'])): ?>
                             <div class="footer__desc">
@@ -41,7 +42,7 @@ if ($footer):
                         <div class="col-lg-4">
                             <div class="footer__item">
                                 <?php if (!empty($footer['tieu_de_2'])): ?>
-                                    <h3 class="footer__item--title"><?php echo $footer['tieu_de_2']; ?></h3>
+                                    <h3 class="footer__item--title h4"><?php echo $footer['tieu_de_2']; ?></h3>
                                 <?php endif; ?>
                                 <?php
                                 if (has_nav_menu('footer-1')) {
@@ -60,7 +61,7 @@ if ($footer):
                         <div class="col-lg-4">
                             <div class="footer__item">
                                 <?php if (!empty($footer['tieu_de_3'])): ?>
-                                    <h3 class="footer__item--title"><?php echo $footer['tieu_de_3']; ?></h3>
+                                    <h3 class="footer__item--title h4"><?php echo $footer['tieu_de_3']; ?></h3>
                                 <?php endif; ?>
                                 <div class="information">
                                     <div class="information__item">
@@ -119,7 +120,7 @@ if ($footer):
                         <div class="col-lg-4">
                             <div class="footer__item">
                                 <?php if (!empty($footer['tieu_de_4'])): ?>
-                                    <h3 class="footer__item--title"><?php echo $footer['tieu_de_4']; ?></h3>
+                                    <h3 class="footer__item--title h4"><?php echo $footer['tieu_de_4']; ?></h3>
                                 <?php endif; ?>
                                 <?php if (!empty($footer['anh_tru_so'])): ?>
                                     <div class="footer__item--linkFb">

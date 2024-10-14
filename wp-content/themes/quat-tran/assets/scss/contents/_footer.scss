@@ -1,5 +1,5 @@
 .footer {
-	background-color: $primary;
+	background-color: $info;
 
 	&__logo {
 		display: inline-flex;
@@ -15,14 +15,15 @@
 		font-size: 14px;
 	}
 
-	* {
-		color: $white !important;
-	}
+	// * {
+	// 	color: $white !important;
+	// }
 
 	&__item {
 		margin-bottom: 24px;
 
 		&--title {
+			color: $primary;
 			font-weight: bold;
 			text-transform: uppercase;
 

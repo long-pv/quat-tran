@@ -66,3 +66,58 @@ img {
 	border: none;
 	height: auto;
 }
+
+// Slide Product
+.related-product-slider-wrapper {
+	margin-top: 15px;
+}
+
+.related-product-slider {
+	display: flex;
+}
+
+//
+.related-product-item {
+	padding: 5px;
+}
+.related-product-item {
+	// margin-right: 10px;
+	text-align: center;
+}
+
+// Image Slide
+.related-product-item a img {
+	margin: 0px !important;
+}
+
+.related-product-item img {
+	display: block;
+	width: 100%;
+	//
+	max-width: 100%;
+	border: none;
+	height: auto;
+}
+
+.product-item .card-image .variation-item {
+	padding: 5px;
+}
+.product-item .card-image .variation-item a {
+	display: block;
+}
+.product-item .card-image .variation-item.active a {
+	border: 1px solid #670001;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+// Slick
+.active-slider {
+	border: 1px solid #670001;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.slick-slide {
+	padding: 0px !important;
+}
