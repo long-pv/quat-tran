@@ -79,6 +79,11 @@
     .text {
         font-weight: 700;
         color: $primary !important;
+        text-decoration: none !important;
+
+        &:hover {
+            text-decoration: underline !important;
+        }
     }
 }
 
@@ -92,4 +97,40 @@
 
 .single_post_title {
     color: $primary;
+}
+
+.dealer_row {
+    row-gap: 24px;
+}
+
+.dealer_title {
+    color: $primary;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.dealer_info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dealer_info_item {
+    display: flex;
+    gap: 12px;
+
+    .icon {
+        display: inline-flex;
+
+        svg {
+            margin-top: 4px;
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    a {
+        text-decoration: underline !important;
+        color: $primary;
+    }
 }
