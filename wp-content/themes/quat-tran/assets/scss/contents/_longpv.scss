@@ -138,3 +138,12 @@
         color: $primary;
     }
 }
+
+.singlePost__title a {
+    text-decoration: none !important;
+
+    &:hover {
+        transition: all 0.3s;
+        text-decoration: underline !important;
+    }
+}
