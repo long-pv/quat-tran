@@ -55,11 +55,29 @@
 	});
 
 	//
-
 	$(".product-slider").slick({
 		slidesToShow: 4,
 		slidesToScroll: 1,
-		autoplay: true,
+		infinite: false,
+		autoplay: false,
 		autoplaySpeed: 2000,
+	});
+
+	// Kích hoạt slide cho ảnh chính và gallery thu nhỏ
+	$(".thumbnail-gallery-for").slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		fade: true,
+		asNavFor: ".thumbnail-gallery-nav",
+	});
+
+	$(".thumbnail-gallery-nav").slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		asNavFor: ".thumbnail-gallery-for",
+		dots: false,
+		arrows: true,
+		focusOnSelect: true,
 	});
 })(jQuery, window);

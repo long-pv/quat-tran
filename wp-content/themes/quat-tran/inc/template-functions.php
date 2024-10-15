@@ -294,8 +294,6 @@ function img_url($img = '', $size = 'medium')
 // remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);  // Xóa hình ảnh sản phẩm mặc định
 // remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10); // Xóa tiêu đề sản phẩm mặc định
 // remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10); // Xóa giá sản phẩm mặc định
-// // Ẩn nút Add to Cart
-// add_filter('woocommerce_loop_add_to_cart_link', '__return_false');
 
 
 
@@ -395,3 +393,12 @@ function img_url($img = '', $size = 'medium')
 // }
 
 
+// Hủy bỏ nút tăng giảm số lượng sản phẩm
+add_filter('woocommerce_is_sold_individually', 'disable_quantity_field', 10, 2);
+function disable_quantity_field($return, $product)
+{
+	return true;
+}
+
+// Hủy bỏ nút Add to Cart trang Detail
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
