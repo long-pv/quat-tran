@@ -51,7 +51,11 @@
 				margin-bottom: 10px;
 
 				& > a {
-					color: $secondary;
+					color: $primary;
+
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 			}
 		}
