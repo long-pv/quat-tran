@@ -62,18 +62,6 @@ $categories = get_the_category($post_id);
 	</div>
 </div>
 
-<?php if ($post->post_type == 'product'): ?>
-	<section class="secSpace">
-		<div class="container">
-			<?php
-			while (have_posts()):
-				the_post();
-				the_content();
-			endwhile;
-			?>
-		</div>
-	</section>
-<?php endif; ?>
 
 <?php
 $args_latest_posts = array(

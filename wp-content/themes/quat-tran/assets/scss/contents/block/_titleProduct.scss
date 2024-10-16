@@ -1,0 +1,45 @@
+.titleProduct {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 2px solid $primary;
+	margin-bottom: 24px;
+
+	&__title {
+		padding: 8px 24px;
+		background-color: $primary;
+		margin-bottom: 0px;
+
+		a {
+			color: $white;
+			text-transform: uppercase;
+		}
+	}
+
+	&__seemore {
+		font-style: italic;
+		color: $primary; /* Màu nâu đậm giống trong hình */
+		text-decoration: none; /* Bỏ gạch chân mặc định của thẻ a */
+		display: inline-flex;
+		align-items: center;
+		font-weight: normal; /* Đảm bảo rằng chữ không quá đậm */
+		gap: 5px;
+
+		// &:hover {
+		// 	color: $primary; /* Thêm hiệu ứng hover với màu đậm hơn */
+		// 	text-decoration: underline /* Thêm gạch chân dưới dòng chữ */;
+		// }
+
+		span {
+			font-weight: bold; /* Phần số đậm */
+			font-style: italic; /* Phần số cũng chữ nghiêng */
+		}
+
+		svg {
+			// margin-left: 5px; /* Khoảng cách giữa văn bản và mũi tên */
+			width: 16px;
+			height: 16px;
+			fill: $primary; /* Màu của mũi tên */
+		}
+	}
+}
