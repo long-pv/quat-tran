@@ -1,10 +1,10 @@
 {
     "key": "group_670a617f200d2",
-    "title": "Social",
+    "title": "Social Footer",
     "fields": [
         {
             "key": "field_670a617f7da42",
-            "label": "Social",
+            "label": "Social Footer",
             "name": "social",
             "aria-label": "",
             "type": "group",
@@ -159,5 +159,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728733918
+    "modified": 1729065721
 }

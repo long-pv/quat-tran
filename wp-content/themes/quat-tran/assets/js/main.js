@@ -58,7 +58,7 @@
 	$(".product-slider").slick({
 		slidesToShow: 4,
 		slidesToScroll: 1,
-		infinite: false,
+		infinite: true,
 		autoplay: false,
 		autoplaySpeed: 2000,
 	});

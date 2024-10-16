@@ -11,7 +11,14 @@
             </a>
         </h3>
         <div class="productItem__price">
-            <?php echo wc_price($product->get_sale_price()); ?>
+            <!-- Price -->
+            Giá:
+            <?php if ($product->is_on_sale()): ?>
+                <span class="sale-price"><?php echo wc_price($product->get_sale_price()); ?></span>
+            <?php else: ?>
+                <span class="regular-price"><?php echo wc_price($product->get_regular_price()); ?></span>
+            <?php endif; ?>
+            <!-- / Price -->
         </div>
     </div>
 </article>

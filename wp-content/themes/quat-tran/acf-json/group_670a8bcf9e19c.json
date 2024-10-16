@@ -114,7 +114,7 @@
                 },
                 {
                     "key": "field_670a92e8a093d",
-                    "label": "Liên hệ",
+                    "label": "Thông Tin Liên hệ",
                     "name": "",
                     "aria-label": "",
                     "type": "tab",
@@ -148,6 +148,46 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
+                },
+                {
+                    "key": "field_670f728f24472",
+                    "label": "Information 1",
+                    "name": "information_1",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                },
+                {
+                    "key": "field_670f75224e3b4",
+                    "label": "Information 2",
+                    "name": "information_2",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
                 },
                 {
                     "key": "field_670a8c52a4fc6",
@@ -232,5 +272,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728746484
+    "modified": 1729066298
 }

@@ -63,14 +63,21 @@ if ($footer):
                                 <?php if (!empty($footer['tieu_de_3'])): ?>
                                     <h3 class="footer__item--title h4"><?php echo $footer['tieu_de_3']; ?></h3>
                                 <?php endif; ?>
-                                <div class="information">
-                                    <div class="information__item">
-                                        <div class="text">
-                                            <p>Mua Hàng: 09.1102.1102 </p>
-                                            <p>Thắc mắc khiếu nại: 090.234.8 886</p>
-                                            <p>Bảo hành: 096.234.8886</p>
+                                <div class="infomation">
+                                    <?php if (!empty($footer['information_1'])): ?>
+                                        <div class="item item-phone">
+                                            <div class="editor">
+                                                <?php echo $footer['information_1']; ?>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($footer['information_2'])): ?>
+                                        <div class="item item-mail">
+                                            <div class="editor">
+                                                <?php echo $footer['information_2']; ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                                 <!-- Socials -->
                                 <?php $contact_info = get_field('social', 'option') ?? null;
