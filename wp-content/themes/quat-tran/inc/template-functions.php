@@ -402,3 +402,11 @@ function disable_quantity_field($return, $product)
 
 // Hủy bỏ nút Add to Cart trang Detail
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+
+
+//
+add_action('after_setup_theme', 'yourtheme_woocommerce_support');
+function yourtheme_woocommerce_support()
+{
+	add_theme_support('woocommerce');
+}
