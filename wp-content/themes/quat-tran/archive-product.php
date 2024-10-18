@@ -10,7 +10,7 @@ get_header(); ?>
         <?php wp_breadcrumbs(); ?>
 
         <?php if (apply_filters('woocommerce_show_page_title', true)): ?>
-            <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+            <h1 class="h2 product_cat_title"><?php woocommerce_page_title(); ?></h1>
         <?php endif; ?>
 
         <div class="menu-filter">
@@ -34,20 +34,22 @@ get_header(); ?>
             }
             ?>
         </div>
-        <div class="product-cat__wrapper">
-            <!-- Hiển thị bộ lọc sắp xếp sản phẩm của WooCommerce -->
-            <?php woocommerce_catalog_ordering(); ?>
+    </div>
 
-            <!-- Hiển thị số lượng sản phẩm trong danh mục hiện tại -->
-            <?php
-            $total_products = wc_get_loop_prop('total');
-            ?>
-            <div class="woocommerce-result-count">
-                <span><?php echo esc_html($total_products); ?> </span> kết quả
+    <div class="product-cat__wrapper product_cat_wrap">
+        <div class="container">
+            <div class="catalog_ordering">
+                <?php
+                $total_products = wc_get_loop_prop('total');
+                ?>
+                <div class="woocommerce-result-count">
+                    <span><?php echo esc_html($total_products); ?> </span> kết quả
+                </div>
+
+                <?php woocommerce_catalog_ordering(); ?>
             </div>
-            <!-- Hiển thị danh sách sản phẩm -->
             <?php if ($total_products): ?>
-                <div class="list-product-cat row">
+                <div class="list-product-cat row list_product">
                     <?php while (have_posts()):
                         the_post(); ?>
                         <div class="col-lg-3 col-md-6">
@@ -55,6 +57,7 @@ get_header(); ?>
                         </div>
                     <?php endwhile; ?>
                 </div>
+                <?php pagination(); ?>
             <?php endif; ?>
         </div>
     </div>

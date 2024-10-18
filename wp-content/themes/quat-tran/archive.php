@@ -9,8 +9,6 @@
 
 get_header();
 $current_category = get_queried_object();
-
-var_dump($current_category);
 ?>
 
 <div class="container">

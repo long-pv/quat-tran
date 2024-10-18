@@ -4,14 +4,12 @@
 	border-radius: 5px;
 	padding: 10px;
 
-	margin-bottom: 24px;
-
 	a {
-		color: #333;
+		color: $body !important;
 
 		&:hover {
-			text-decoration: none;
-			color: $primary;
+			transition: all 0.3s;
+			text-decoration: underline;
 		}
 	}
 
@@ -19,9 +17,10 @@
 		height: 0px;
 		padding-bottom: 100%;
 		position: relative;
-		display: block;
+		display: flex;
 		overflow: hidden;
 		margin-bottom: 16px;
+		border-radius: 10px;
 
 		img {
 			width: 100%;
