@@ -72,8 +72,11 @@ function quat_tran_setup()
 		array(
 			'menu-1' => esc_html__('Primary', 'quat-tran'),
 
-			//
+			// Footer 
 			'footer-1' => esc_html__('Footer', 'quat-tran'),
+
+			// Menu Filter
+			'menu-filter' => esc_html__('Menu Filter', 'quat-tran')
 		)
 	);
 
@@ -188,10 +191,14 @@ function quat_tran_scripts()
 
 	// scroll smooth hash id element
 	wp_enqueue_script('basetheme-script-scroll_smooth', get_template_directory_uri() . '/assets/js/scroll_smooth.js', array(), _S_VERSION, true);
+	// readmore Component
+	wp_enqueue_script('quat-tran-script-readmore', get_template_directory_uri() . '/assets/js/readmore.js', array(), null, true);
 
 	//add custom main css/js
 	wp_enqueue_style('quat-tran-style-main', get_template_directory_uri() . '/assets/css/main.css', array(), _S_VERSION);
 	wp_enqueue_script('quat-tran-script-main', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION, true);
+
+
 }
 add_action('wp_enqueue_scripts', 'quat_tran_scripts');
 

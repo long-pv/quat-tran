@@ -80,4 +80,80 @@
 		arrows: true,
 		focusOnSelect: true,
 	});
+
+	// Menu Filter Click Event
+	$(".menu-filter .menu-filter__nav .menu li.menu-item").on(
+		"click",
+		function () {
+			$(this).find("ul.sub-menu").toggle();
+		}
+	);
+
+	//
+
+	$(".readmore_content").readmore({
+		moreLink:
+			'<div class="readmore_content_exists rm_down"><button>Đọc thêm <i class="fas fa-caret-down"></i></button></div>',
+		lessLink:
+			'<div class="readmore_content_exists rm_up"><button>Thu gọn <i class="fas fa-caret-up"></i></button></div>',
+		collapsedHeight: 150,
+		afterToggle: function (trigger, element, expanded) {
+			if (!expanded) {
+				// The "Close" link was clicked
+				$("html, body").animate(
+					{ scrollTop: element.offset().top },
+					{ duration: 100 }
+				);
+			}
+		},
+	});
+
+	// $(".readmore_content_ab").readmore({
+	// 	moreLink:
+	// 		'<div class="readmore_content_exists rm_down"><button>Đọc thêm <i class="fas fa-caret-down"></i></button></div>',
+	// 	lessLink:
+	// 		'<div class="readmore_content_exists rm_up"><button>Thu gọn <i class="fas fa-caret-up"></i></button></div>',
+	// 	collapsedHeight: 340,
+	// 	afterToggle: function (trigger, element, expanded) {
+	// 		if (!expanded) {
+	// 			// The "Close" link was clicked
+	// 			$("html, body").animate(
+	// 				{ scrollTop: element.offset().top },
+	// 				{ duration: 100 }
+	// 			);
+	// 		}
+	// 	},
+	// });
+	// $(".readmore_content_dt").readmore({
+	// 	moreLink:
+	// 		'<div class="readmore_content_exists rm_down"><button>Đọc thêm <i class="fas fa-caret-down"></i></button></div>',
+	// 	lessLink:
+	// 		'<div class="readmore_content_exists rm_up"><button>Thu gọn <i class="fas fa-caret-up"></i></button></div>',
+	// 	collapsedHeight: 700,
+	// 	afterToggle: function (trigger, element, expanded) {
+	// 		if (!expanded) {
+	// 			// The "Close" link was clicked
+	// 			$("html, body").animate(
+	// 				{ scrollTop: element.offset().top },
+	// 				{ duration: 100 }
+	// 			);
+	// 		}
+	// 	},
+	// });
+	// $(".readmore_content_dt2").readmore({
+	// 	moreLink:
+	// 		'<div class="readmore_content_exists rm_down"><button>Đọc thêm <i class="fas fa-caret-down"></i></button></div>',
+	// 	lessLink:
+	// 		'<div class="readmore_content_exists rm_up"><button>Thu gọn <i class="fas fa-caret-up"></i></button></div>',
+	// 	collapsedHeight: 500,
+	// 	afterToggle: function (trigger, element, expanded) {
+	// 		if (!expanded) {
+	// 			// The "Close" link was clicked
+	// 			$("html, body").animate(
+	// 				{ scrollTop: element.offset().top },
+	// 				{ duration: 100 }
+	// 			);
+	// 		}
+	// 	},
+	// });
 })(jQuery, window);

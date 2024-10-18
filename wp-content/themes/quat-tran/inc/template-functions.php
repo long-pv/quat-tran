@@ -410,3 +410,27 @@ function yourtheme_woocommerce_support()
 {
 	add_theme_support('woocommerce');
 }
+
+// Xử lý dịch ordering woocommerce
+add_filter('woocommerce_catalog_orderby', 'custom_woocommerce_catalog_orderby');
+
+function custom_woocommerce_catalog_orderby($sortby)
+{
+	$sortby = array(
+		'menu_order' => 'Thứ tự mặc định',
+		'popularity' => 'Phổ biến',
+		'rating' => 'Xếp hạng cao',
+		'date' => 'Mới nhất',
+		'price' => 'Giá: Thấp đến Cao',
+		'price-desc' => 'Giá: Cao đến Thấp',
+	);
+
+	return $sortby;
+}
+
+// // Đăng ký file trong thư mục
+// wp_register_script('quat-tran-script-readmore', get_template_directory_uri() . '/assets/js/readmore.js', array());
+// if (wp_script_is('quat-tran-script-readmore', 'registered')) {
+// 	echo 'Script has been registered!';
+// }
+

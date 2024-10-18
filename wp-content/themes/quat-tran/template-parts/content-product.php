@@ -12,7 +12,6 @@
         </h3>
         <div class="productItem__price">
             <!-- Price -->
-            Giá:
             <?php if ($product->is_on_sale()): ?>
                 <span class="sale-price"><?php echo wc_price($product->get_sale_price()); ?></span>
             <?php else: ?>
