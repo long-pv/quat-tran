@@ -147,3 +147,75 @@
         text-decoration: underline !important;
     }
 }
+
+.form_search {
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+
+    @include media-breakpoint-down(md) {
+        width: 150px;
+    }
+
+    form {
+        position: relative;
+        width: 100%;
+    }
+
+    input {
+        height: 40px;
+        width: 100%;
+        border: none !important;
+        outline: none !important;
+        border-radius: 4px;
+        padding: 12px;
+        background-color: $success;
+        color: $white;
+        font-size: 12px;
+        width: 100%;
+        font-style: italic;
+
+        @include media-breakpoint-down(md) {
+            height: 32px;
+            padding: 4px;
+        }
+
+        &::placeholder {
+            font-style: italic;
+            font-size: 12px;
+            color: $white;
+
+            @include media-breakpoint-down(md) {
+                font-size: 10px;
+            }
+        }
+    }
+
+    button {
+        display: inline-flex;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        padding: 0px;
+        margin: 0px;
+        outline: none !important;
+        background: none !important;
+        border: none !important;
+
+        @include media-breakpoint-down(md) {
+            right: 4px;
+        }
+
+        svg {
+            width: 100%;
+        }
+    }
+}
+
+.header__navInner {
+    gap: 24px;
+}
