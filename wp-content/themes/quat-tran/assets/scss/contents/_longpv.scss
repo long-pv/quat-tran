@@ -281,3 +281,37 @@
         padding: 16px !important;
     }
 }
+
+.sectionBanner__item {
+    height: 550px !important;
+    min-height: unset !important;
+    max-height: unset !important;
+    overflow: hidden;
+
+    @include media-breakpoint-down(md) {
+        height: 400px !important;
+    }
+
+    @include media-breakpoint-down(sm) {
+        height: 300px !important;
+    }
+
+    img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.sectionBanner__slider {
+    &-slide {
+        user-select: text;
+    }
+
+    &-track {
+        margin-left: unset;
+    }
+}

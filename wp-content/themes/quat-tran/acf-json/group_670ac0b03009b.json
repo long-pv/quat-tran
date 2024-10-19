@@ -1,7 +1,24 @@
 {
     "key": "group_670ac0b03009b",
-    "title": "Banner",
+    "title": "Home page",
     "fields": [
+        {
+            "key": "field_671381ff056c9",
+            "label": "Banner",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
         {
             "key": "field_670ac0c081fe3",
             "label": "Banner",
@@ -67,9 +84,15 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "featured_image"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728834048
+    "modified": 1729331744
 }

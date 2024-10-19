@@ -290,109 +290,6 @@ function img_url($img = '', $size = 'medium')
 }
 
 
-// // Remove Đefault
-// remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);  // Xóa hình ảnh sản phẩm mặc định
-// remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10); // Xóa tiêu đề sản phẩm mặc định
-// remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10); // Xóa giá sản phẩm mặc định
-
-
-
-// // Display Product
-// add_action('woocommerce_after_shop_loop_item', 'custom_product_display', 20);
-// function custom_product_display()
-// {
-// 	global $product;
-
-// 	// Lấy thông tin sản phẩm
-// 	$product_id = $product->get_id();
-// 	$product_title = $product->get_name();
-// 	$product_price = $product->get_price_html();
-// 	$product_permalink = get_permalink($product_id);
-// 	$product_image = wp_get_attachment_image_src(get_post_thumbnail_id($product_id), 'single-post-thumbnail');
-
-// 	// Tạo HTML giao diện sản phẩm
-// 	echo '<div id="product-item-info-' . $product_id . '" class="product-item center product-item-info">';
-// 	echo '<div class="card-body">';
-// 	echo '<h5 class="cart-title"><a class="titlehover" href="' . $product_permalink . '">' . $product_title . '</a></h5>';
-// 	echo '<div class="price-product">';
-// 	echo '<div class="price">' . $product_price . '</div>';
-// 	echo '</div>';
-// 	echo '</div>';
-
-// 	// Phần card-image chứa hình ảnh và slider sản phẩm
-// 	echo '<div class="card-image">';
-// 	echo '<a href="' . $product_permalink . '" class="box-img">';
-
-// 	// Kiểm tra nếu sản phẩm có hình ảnh thì hiển thị hình ảnh, nếu không thì hiển thị ảnh mặc định
-// 	if ($product_image) {
-// 		echo '<img class="product-image-photo" src="' . esc_url($product_image[0]) . '" alt="' . $product_title . '">';
-// 	} else {
-// 		// Thay thế bằng một ảnh mặc định nếu không có hình ảnh sản phẩm
-// 		echo '<img class="product-image-photo" src="' . esc_url(get_template_directory_uri() . '/assets/images/default-image.jpg') . '" alt="' . $product_title . '">';
-// 	}
-
-// 	echo '</a>';
-
-// 	// Gọi đến slider sản phẩm cùng danh mục bằng hook
-// 	do_action('woocommerce_after_shop_loop_item_category_slider');
-
-// 	echo '</div>'; // Đóng thẻ card-image
-// 	echo '</div>'; // Đóng thẻ product-item-info
-// }
-
-
-// // Slide Category Product
-// add_action('woocommerce_after_shop_loop_item_category_slider', 'custom_category_product_slider', 20);
-// function custom_category_product_slider()
-// {
-// 	global $product;
-
-// 	// Lấy ID các danh mục của sản phẩm hiện tại
-// 	$terms = wp_get_post_terms($product->get_id(), 'product_cat');
-// 	if (!empty($terms)) {
-// 		$category_ids = wp_list_pluck($terms, 'term_id');
-
-// 		// Truy vấn sản phẩm cùng danh mục, loại trừ sản phẩm hiện tại
-// 		$args = array(
-// 			'post_type' => 'product',
-// 			'posts_per_page' => 5,  // Số lượng sản phẩm hiển thị trong slider
-// 			// 'post__not_in' => array($product->get_id()),  // Loại trừ sản phẩm hiện tại
-// 			'tax_query' => array(
-// 				array(
-// 					'taxonomy' => 'product_cat',
-// 					'field' => 'term_id',
-// 					'terms' => $category_ids,
-// 				),
-// 			),
-// 		);
-
-// 		$related_products = wc_get_products($args);
-
-// 		// Kiểm tra và hiển thị sản phẩm
-// 		if (!empty($related_products)) {
-// 			echo '<div class="related-product-slider-wrapper">';
-// 			echo '<div class="related-product-slider">';
-
-// 			foreach ($related_products as $related_product) {
-// 				$image_url = wp_get_attachment_url($related_product->get_image_id());
-// 				$price_html = $related_product->get_price_html();
-// 				$product_price = $related_product->get_price();
-// 				$product_url = get_permalink($related_product->get_id());
-
-// 				echo '<div class="related-product-item">';
-// 				echo '<a href="' . esc_url($product_url) . '" data-img="' . esc_url($image_url) . '"data-title="' . esc_attr($related_product->get_name()) . '" data-price="' . $product_price . '">';
-// 				echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($related_product->get_name()) . '">';
-// 				echo '</a>';
-// 				echo '</div>';
-// 			}
-
-// 			echo '</div>';
-// 			echo '</div>';
-// 		}
-// 	}
-// }
-
-
 // Hủy bỏ nút tăng giảm số lượng sản phẩm
 add_filter('woocommerce_is_sold_individually', 'disable_quantity_field', 10, 2);
 function disable_quantity_field($return, $product)
@@ -428,9 +325,8 @@ function custom_woocommerce_catalog_orderby($sortby)
 	return $sortby;
 }
 
-// // Đăng ký file trong thư mục
-// wp_register_script('quat-tran-script-readmore', get_template_directory_uri() . '/assets/js/readmore.js', array());
-// if (wp_script_is('quat-tran-script-readmore', 'registered')) {
-// 	echo 'Script has been registered!';
-// }
+add_filter('loop_shop_per_page', 'set_products_per_page', 20);
+function set_products_per_page($cols) {
+    return 20;
+}
 
