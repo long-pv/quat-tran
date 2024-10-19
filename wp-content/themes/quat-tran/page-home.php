@@ -30,12 +30,10 @@ if ($banner):
                     ?>
                     <div>
                         <div class="sectionBanner__item">
-                            <picture>
-                                <source media="(min-width:768px)"
-                                    srcset="<?php echo img_url($item['banner_image'], 'large'); ?>">
-                                <img class="sectionBanner__itemImg"
-                                    src="<?php echo img_url($item['banner_image'], 'medium'); ?>" alt="Banner image">
-                            </picture>
+                            <?php
+                            $image_html = wp_get_attachment_image($item['banner_image'], 'full');
+                            echo $image_html;
+                            ?>
                         </div>
                     </div>
                     <?php

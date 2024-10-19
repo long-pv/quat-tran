@@ -1,8 +1,14 @@
-<?php global $product; ?>
+<?php
+global $product;
+?>
 
 <article class="productItem" data-mh="productItem">
     <a href="<?php the_permalink(); ?>" class="imgGroup productItem__img">
-        <img width="300" height="300" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+        <?php
+        $image_id = get_post_thumbnail_id(get_the_ID());
+        $image_html = wp_get_attachment_image($image_id, 'full');
+        echo $image_html;
+        ?>
     </a>
     <div class="productItem__content">
         <h3 class="h4 productItem__title" data-mh="title_product">

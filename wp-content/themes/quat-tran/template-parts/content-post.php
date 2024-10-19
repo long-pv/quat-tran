@@ -6,10 +6,13 @@ $categories = get_the_category($post_id);
 <article id="post-<?php echo $post_id; ?>" class="singlePost">
 	<div class="row singlePost__row">
 		<div class="col-6 col-md-4 col-lg-3">
-			<div class="imgGroup">
-				<img src="<?php echo img_url($thumbnail_id, 'medium'); ?>" alt="<?php the_title(); ?>">
-				<a class="singlePost__link" href="<?php the_permalink(); ?>"></a>
-			</div>
+			<a href="<?php the_permalink(); ?>" class="imgGroup">
+				<?php
+				$image_id = get_post_thumbnail_id($post_id);
+				$image_html = wp_get_attachment_image($image_id, 'full');
+				echo $image_html;
+				?>
+			</a>
 		</div>
 
 		<div class="col-6 col-md-8 col-lg-9">
