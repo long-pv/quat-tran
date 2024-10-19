@@ -47,64 +47,100 @@ if ($banner):
 <?php endif; ?>
 <!-- / Banner -->
 
-<section class="secSpace">
-    <div class="top-product">
+<?php
+$featured_projects = get_field('featured_projects');
+if ($featured_projects):
+    $args = array(
+        'post_type' => 'product',
+        'post__in' => $featured_projects,
+        'posts_per_page' => -1,
+        'orderby' => 'post__in',
+    );
+
+    $query = new WP_Query($args);
+    ?>
+    <section class="secSpace">
         <div class="container">
-            <!-- Title -->
-            <div class="titleProduct">
-                <h2 class="h4 titleProduct__title">
-                    <a href="#">
-                        Sản phẩm bán chạy
-                    </a>
+            <div class="featured_projects_block">
+                <h2 class="h3 featured_projects_title">
+                    Top sản phẩm tiêu biểu
                 </h2>
-                <a href="#" class="titleProduct__seemore">
-                    Xem thêm <span> 44 </span> sản phẩm
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path
-                            d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
-                    </svg>
-                </a>
+                <div class="featured_projects">
+                    <?php
+                    if ($query->have_posts()):
+                        while ($query->have_posts()):
+                            $query->the_post(); ?>
+                            <div>
+                                <?php get_template_part('template-parts/content-product'); ?>
+                            </div>
+                            <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    endif; ?>
+                </div>
             </div>
-            <!-- / Title -->
-
-            <!-- Category Product -->
-            <?php
-            $args = array(
-                'post_type' => 'product',
-                'posts_per_page' => 10,
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'product_cat',
-                        'field' => 'slug',
-                        'terms' => 'uncategorized',
-                    ),
-                ),
-            );
-
-            $query = new WP_Query($args);
-
-            if ($query->have_posts()) {
-                echo '<div class="product-slider">';
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    get_template_part('template-parts/content-product');
-                }
-                echo '</div>';
-            }
-
-            // Reset post data after the query
-            wp_reset_postdata();
-
-            // Add "View More" button
-            $product_count = wp_count_posts('product')->publish;
-            if ($product_count > 10) {
-                echo '<a href="' . get_term_link('uncategorized', 'product_cat') . '" class="view-more">Xem thêm</a>';
-            }
-            ?>
-            <!-- / Top Product -->
         </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>
+
+<?php
+$product_categories = get_field('product_categories');
+if ($product_categories):
+    foreach ($product_categories as $key => $cat_id):
+        $term = get_term($cat_id, 'product_cat');
+        $term_link = get_term_link($term);
+
+        $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => 10,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'term_id',
+                    'terms' => $cat_id,
+                ),
+            ),
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()):
+            $total_product = $query->found_posts;
+            $total_query = $query->post_count;
+            $xem_them = $total_product - $total_query;
+            ?>
+            <section class="secSpace <?php echo ($key % 2 == 0) ? 'bg-info' : ''; ?>">
+                <div class="container">
+                    <div class="sec_heading">
+                        <h2 class="h3 sec_title">
+                            <?php echo $term->name; ?>
+                        </h2>
+                        <a class="sec_link" href="<?php echo $term_link; ?>">
+                            Xem thêm <?php echo $xem_them > 0 ? (string) $xem_them . ' sản phẩm' : ''; ?>
+                        </a>
+                    </div>
+                    <div class="product_list_slider">
+                        <?php
+                        while ($query->have_posts()):
+                            $query->the_post(); ?>
+                            <div>
+                                <div class="product_item">
+                                    <?php get_template_part('template-parts/content-product'); ?>
+                                </div>
+                            </div>
+                        <?php endwhile;
+                        wp_reset_postdata();
+                        ?>
+                    </div>
+                </div>
+            </section>
+            <?php
+        endif;
+    endforeach;
+endif;
+?>
 
 <?php
 get_footer();
