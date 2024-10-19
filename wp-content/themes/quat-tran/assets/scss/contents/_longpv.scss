@@ -220,8 +220,39 @@
     gap: 24px;
 }
 
+.menu-filter {
+    display: flex;
+    gap: 16px;
+
+    @include media-breakpoint-down(sm) {
+        flex-direction: column;
+    }
+
+    .menu-filter__nav {
+        flex-shrink: 0;
+
+        ul.menu {
+            margin: 0px !important;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+
+            @include media-breakpoint-down(sm) {
+                flex-direction: column;
+            }
+
+            &>li {
+                margin: 0px !important;
+                flex-shrink: 0;
+            }
+        }
+    }
+}
+
 .menu-filter .capt {
     float: unset !important;
+    flex-shrink: 0;
+    display: block;
 }
 
 .catalog_ordering {
