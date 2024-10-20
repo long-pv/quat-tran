@@ -7,115 +7,109 @@
  * @package quat-tran
  */
 
-get_header();
-?>
+$product_id = get_the_ID();
+$product = wc_get_product($product_id);
+set_post_views($product_id);
 
-<?php
-$product_id = get_the_ID(); // Lấy ID sản phẩm hiện tại từ trang
-$product = wc_get_product($product_id); // Lấy đối tượng sản phẩm bằng ID
+get_header();
 ?>
 
 <!-- Single Product -->
 <section class="secSpace">
-	<div class="detailProduct">
-		<div class="container">
+	<div class="container">
+		<?php wp_breadcrumbs(); ?>
+		<div class="product_info_wrap">
 			<div class="row">
-				<div class="col-lg-10">
-					<article class="product-detail">
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="product-images">
-									<div class="thumbnail-gallery-for">
-										<div class="main-image">
-											<img src="<?php echo wp_get_attachment_url($product->get_image_id()); ?>"
-												alt="<?php the_title(); ?>">
-										</div>
-
-										<!-- Hiển thị các ảnh trong gallery -->
-										<?php
-										$attachment_ids = $product->get_gallery_image_ids();
-										foreach ($attachment_ids as $attachment_id):
-											$image_link = wp_get_attachment_url($attachment_id);
-											?>
-											<div class="main-image">
-												<img src="<?php echo $image_link; ?>"
-													alt="<?php echo get_the_title($attachment_id); ?>">
-											</div>
-										<?php endforeach; ?>
-									</div>
-
-									<div class="thumbnail-gallery-nav">
-										<div class="thumbnail-img">
-											<img class="thumbnail"
-												src="<?php echo wp_get_attachment_url($product->get_image_id()); ?>"
-												alt="<?php the_title(); ?>">
-										</div>
-										<?php
-										foreach ($attachment_ids as $attachment_id):
-											$image_link = wp_get_attachment_url($attachment_id);
-											?>
-											<div class="thumbnail-img">
-												<img class="thumbnail" src="<?php echo $image_link; ?>"
-													alt="<?php echo get_the_title($attachment_id); ?>">
-											</div>
-										<?php endforeach; ?>
-									</div>
+				<div class="col-lg-6">
+					<?php
+					$attachment_ids = $product->get_gallery_image_ids();
+					if ($attachment_ids):
+						?>
+						<div class="product-gallery">
+							<?php foreach ($attachment_ids as $attachment_id): ?>
+								<div class="gallery-item">
+									<?php echo wp_get_attachment_image($attachment_id, 'full'); ?>
 								</div>
+							<?php endforeach; ?>
+						</div>
+
+						<div class="product-thumbnails">
+							<?php foreach ($attachment_ids as $attachment_id): ?>
+								<div class="thumbnail-item">
+									<?php echo wp_get_attachment_image($attachment_id, 'thumbnail'); ?>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+				<div class="col-lg-6">
+					<div class="product_info">
+						<h1 class="h1 product_title">
+							<?php the_title(); ?>
+						</h1>
+
+						<?php
+						$product_sku = $product->get_sku() ? $product->get_sku() : 'N/A';
+						$stock_status = $product->is_in_stock() ? 'Còn hàng' : 'Hết hàng';
+						$product_views = get_post_meta($product_id, 'post_views_count', true);
+						$product_views = $product_views ? $product_views : 0;
+						?>
+
+						<div class="meta_product">
+							<div class="sku_pro">
+								Mã sản phẩm: <span class="sku"><?php echo esc_html($product_sku); ?></span>
 							</div>
-							<div class="col-lg-6">
-								<div class="product-info">
-									<!-- Title -->
-									<h1 class="product-title"><?php the_title(); ?></h1>
-									<!-- / Title -->
-
-									<!-- Sku -->
-									<div class="header-pdt-other">
-										<div class="htp-l">
-											<span class="hpo-item cl-red"><?php echo $product->get_sku(); ?></span>
-										</div>
-									</div>
-									<!-- / Sku -->
-
-									<!-- Price -->
-									<p class="product-price">
-										Giá:
-										<?php if ($product->is_on_sale()): ?>
-											<span
-												class="sale-price"><?php echo wc_price($product->get_sale_price()); ?></span>
-										<?php else: ?>
-											<span
-												class="regular-price"><?php echo wc_price($product->get_regular_price()); ?></span>
-										<?php endif; ?>
-									</p>
-									<!-- / Price -->
-
-									<!-- Short Desc -->
-									<div class="product-meta">
-										<?php echo $product->get_short_description(); ?>
-									</div>
-									<!-- / Short Desc -->
-
-									<!-- Nút tư vấn sản phẩm -->
-									<div class="product-contact">
-										<a href="tel:0866081858"><span class="icons icon-phone"></span> Tư vấn sản
-											phẩm</a>
-										<a href="/danh-sach-dai-ly-chinh-hang"><span class="icons icon-location"></span>
-											Tìm
-											điểm
-											bán</a>
-									</div>
-								</div>
+							<div class="meta_product_line">|</div>
+							<div class="stock_pro">
+								Tình trạng: <span class="stock">
+									<?php echo esc_html($stock_status); ?>
+								</span>
+							</div>
+							<div class="meta_product_line">|</div>
+							<div class="view_pro">
+								Lượt xem: <?php echo esc_html($product_views); ?>
 							</div>
 						</div>
 
-						<!-- Content Main -->
-						<div class="product-content mt-4">
-							<div class="col-lg-10">
-								<?php echo $product->get_description(); ?>
+						<div class="product_info_price h1">
+							<span class="price_title">Giá:</span>
+							<?php
+							$regular_price = $product->get_regular_price();
+							$sale_price = $product->get_sale_price();
+
+							if ($regular_price == 0): ?>
+								<span class="contact-price">Liên hệ</span>
+							<?php elseif ($product->is_on_sale()): ?>
+								<span class="regular-price-sale">
+									<?php echo wc_price($regular_price); ?>
+								</span>
+								<span class="sale-price" style="color: red; margin-left: 10px;">
+									<?php echo wc_price($sale_price); ?>
+								</span>
+							<?php else: ?>
+								<span class="regular-price"><?php echo wc_price($regular_price); ?></span>
+							<?php endif; ?>
+						</div>
+
+						<div class="product_summary">
+							<h3 class="h4 product_summary_title">
+								Đặc điểm nổi bật
+							</h3>
+							<div class="editor">
+								<?php echo $product->get_short_description() ?? 'N/A'; ?>
 							</div>
 						</div>
-						<!-- / Content Main -->
-					</article>
+
+						<!-- Nút tư vấn sản phẩm -->
+						<div class="product-contact">
+							<a href="tel:0866081858"><span class="icons icon-phone"></span> Tư vấn sản
+								phẩm</a>
+							<a href="/danh-sach-dai-ly-chinh-hang"><span class="icons icon-location"></span>
+								Tìm
+								điểm
+								bán</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

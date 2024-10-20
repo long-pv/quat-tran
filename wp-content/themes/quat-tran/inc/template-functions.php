@@ -326,7 +326,21 @@ function custom_woocommerce_catalog_orderby($sortby)
 }
 
 add_filter('loop_shop_per_page', 'set_products_per_page', 20);
-function set_products_per_page($cols) {
-    return 20;
+function set_products_per_page($cols)
+{
+	return 20;
 }
 
+function set_post_views($postID)
+{
+	$countKey = 'post_views_count';
+	$count = get_post_meta($postID, $countKey, true);
+	if ($count == '') {
+		$count = 0;
+		delete_post_meta($postID, $countKey);
+		add_post_meta($postID, $countKey, '1');
+	} else {
+		$count++;
+		update_post_meta($postID, $countKey, $count);
+	}
+}

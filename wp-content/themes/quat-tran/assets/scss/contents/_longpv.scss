@@ -584,3 +584,180 @@
         text-decoration: underline;
     }
 }
+
+.product-gallery {
+    margin-bottom: 16px !important;
+
+    .gallery-item {
+        position: relative;
+        padding-bottom: 100%;
+        overflow: hidden;
+        border-radius: 16px;
+
+        img {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .slick {
+        &-arrow {
+            border: 1px solid $primary;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s;
+            background-color: $white !important;
+            z-index: 10;
+
+            &::before {
+                content: "" !important;
+                opacity: 1 !important;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 16px;
+                height: 16px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+
+            &:hover {
+                transition: all 0.3s;
+                background-color: $info !important;
+            }
+
+            &[aria-disabled="true"] {
+                border: 1px solid $primary;
+
+                &:hover {
+                    background-color: unset !important;
+                    cursor: auto;
+                }
+            }
+        }
+
+        &-prev {
+            left: -15px;
+
+            &::before {
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.57 5.93018L3.5 12.0002L9.57 18.0702' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20.4999 12H3.66992' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            }
+        }
+
+        &-next {
+            right: -15px;
+
+            &::before {
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4302 18.0698L20.5002 11.9998L14.4302 5.92982' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3.5 12L20.33 12' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            }
+        }
+    }
+}
+
+.product-thumbnails {
+    &.slick-slider {
+        margin: 0px -2px !important;
+    }
+
+    .slick {
+        &-slide {
+            user-select: text;
+            padding: 0px 2px;
+        }
+
+        &-track {
+            margin-left: unset;
+        }
+    }
+
+    .slick-slide {
+        .thumbnail-item {
+            opacity: 0.2;
+            border: 1px solid $white;
+        }
+    }
+
+    .slick-slide.slick-current {
+        .thumbnail-item {
+            border: 1px solid $primary;
+            opacity: 1;
+        }
+    }
+
+    .thumbnail-item {
+        position: relative;
+        padding-bottom: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+
+        img {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.product_info_wrap {
+    padding: 16px;
+    background-color: $info;
+    border-radius: 8px;
+
+    @include media-breakpoint-up(lg) {
+        padding: 32px
+    }
+
+    &>.row {
+        row-gap: 32px;
+    }
+}
+
+.meta_product {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $primary;
+
+    @include media-breakpoint-down(sm) {
+        flex-direction: column;
+
+        .meta_product_line {
+            display: none;
+        }
+    }
+}
+
+.product_info_price {
+    margin-bottom: 32px;
+    margin-top: 32px;
+    color: #e51b24;
+    font-weight: 700;
+
+    .regular-price-sale {
+        text-decoration: line-through;
+        color: #c4c4c4;
+    }
+}
+
+.product_summary_title {
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.product_summary {
+    margin-bottom: 24px;
+}

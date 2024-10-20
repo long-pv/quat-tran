@@ -129,4 +129,22 @@
 			}
 		},
 	});
+
+	$(".product-gallery").slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: true,
+		dots: false,
+		infinite: true,
+		asNavFor: ".product-thumbnails",
+	});
+
+	$(".product-thumbnails").slick({
+		slidesToShow: 5,
+		slidesToScroll: 1,
+		asNavFor: ".product-gallery",
+		focusOnSelect: true,
+		arrows: false,
+		dots: false,
+	});
 })(jQuery, window);
