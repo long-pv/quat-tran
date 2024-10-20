@@ -94,6 +94,7 @@ get_header();
 						<?php
 						$short_description = $product->get_short_description();
 						if (!empty($short_description)):
+							$short_description = apply_filters('the_content', $short_description);
 							?>
 							<div class="product_summary">
 								<h3 class="h4 product_summary_title">
@@ -107,11 +108,25 @@ get_header();
 
 						<!-- liên hệ -->
 						<div class="product-contact">
-							<a href="tel:0866081858" class="contact-btn">
+							<?php
+							$phone_consultation = get_field('phone_consultation', 'option') ? 'tel:' . get_field('phone_consultation', 'option') : 'javascript:void(0);';
+							?>
+							<a href="<?php echo $phone_consultation; ?>" class="contact-btn">
 								<span class="icons icon-phone"></span> Tư vấn sản phẩm
 							</a>
-							<a href="/danh-sach-dai-ly-chinh-hang" class="contact-btn">
+							<?php
+							$sales_agent = get_field('sales_agent', 'option') ?? 'javascript:void(0);';
+							?>
+							<a href="<?php echo $sales_agent; ?>" target="<?php echo $sales_agent ? '_blank' : ''; ?>" class="contact-btn">
 								<span class="icons icon-location"></span> Tìm điểm bán
+							</a>
+							<?php
+							$contact_zalo = get_field('contact_zalo', 'option') ?? 'javascript:void(0);';
+							?>
+							<a href="<?php echo $contact_zalo; ?>" target="<?php echo $contact_zalo ? '_blank' : ''; ?>"
+								class="contact-btn contact_btn_zalo">
+								<img src="<?php echo get_template_directory_uri() . '/assets/images/Icon_of_Zalo.png'; ?>"
+									alt="Zalo"> Liên hệ Zalo
 							</a>
 						</div>
 					</div>
@@ -123,7 +138,7 @@ get_header();
 <!-- / Single Product -->
 
 <?php
-$full_description = $product->get_description();
+$full_description = apply_filters('the_content', $product->get_description());
 ?>
 <section class="secSpace pt-0">
 	<div class="container">

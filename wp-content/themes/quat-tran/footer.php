@@ -149,25 +149,42 @@ if ($footer):
 <!-- / Footer -->
 
 <!-- Contact -->
-<div class="supports">
-    <ul class="clearfix">
-        <li>
-            <a target="_blank" href="http://m.me/quattranMrVu" data-wpel-link="external"
-                rel="nofollow external noopener noreferrer"><i class="icon icon_mess"></i></a>
-        </li>
-        <li>
-            <a target="_blank" href="http://zalo.me/09.1102.1102" data-wpel-link="external"
-                rel="nofollow external noopener noreferrer"><i class="icon icon_zalo"></i></a>
-        </li>
-    </ul>
-</div>
+<?php
+$floating_contact_messenger = get_field('floating_contact_messenger', 'option');
+$floating_contact_zalo = get_field('floating_contact_zalo', 'option');
+if ($floating_contact_messenger || $floating_contact_zalo):
+    ?>
+    <div class="supports">
+        <ul class="clearfix">
+            <?php if ($floating_contact_messenger): ?>
+                <li>
+                    <a target="_blank" href="<?php echo $floating_contact_messenger; ?>" data-wpel-link="external"
+                        rel="nofollow external noopener noreferrer"><i class="icon icon_mess"></i></a>
+                </li>
+            <?php endif; ?>
+
+            <?php if ($floating_contact_zalo): ?>
+                <li>
+                    <a target="_blank" href="<?php echo $floating_contact_zalo; ?>" data-wpel-link="external"
+                        rel="nofollow external noopener noreferrer"><i class="icon icon_zalo"></i></a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </div>
+<?php endif; ?>
 <!-- / Contact -->
 
 <!-- callNowButton -->
-<div id="callNowButton" class="fixed_left">
-    <a href="tel:09.1102.1102" class="btc_icon" data-wpel-link="internal"></a>
-    <a href="tel:09.1102.1102" class="btc_text" data-wpel-link="internal"><span>09.1102.1102</span></a>
-</div>
+<?php
+$floating_contact_phone = get_field('floating_contact_phone', 'option');
+if ($floating_contact_phone):
+    ?>
+    <div id="callNowButton" class="fixed_left">
+        <a href="tel:<?php echo $floating_contact_phone; ?>" class="btc_icon" data-wpel-link="internal"></a>
+        <a href="tel:<?php echo $floating_contact_phone; ?>" class="btc_text"
+            data-wpel-link="internal"><span><?php echo $floating_contact_phone; ?></span></a>
+    </div>
+<?php endif; ?>
 <!-- / callNowButton -->
 
 <!-- BackToTop -->

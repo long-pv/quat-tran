@@ -780,6 +780,9 @@
     transition: all 0.5s;
     background-color: #fff;
     width: 50%;
+    gap: 8px;
+    padding: 2px 16px;
+    align-items: center;
 
     @include media-breakpoint-down(sm) {
         width: 100%;
@@ -788,4 +791,38 @@
 
 .title_description {
     text-transform: uppercase;
+}
+
+.contact_btn_zalo {
+    flex: 0 1 100% !important;
+    width: 100% !important;
+
+    img {
+        width: 24px;
+    }
+}
+
+.product-contact a .icons {
+    margin: 0px;
+}
+
+.supports {
+    @include media-breakpoint-down(md) {
+        right: 16px !important;
+        bottom: 80px !important;
+    }
+}
+
+#back-top {
+    @include media-breakpoint-down(md) {
+        right: 16px !important;
+        bottom: 10px !important;
+    }
+}
+
+#callNowButton {
+    @include media-breakpoint-down(md) {
+        left: 16px !important;
+        bottom: 24px !important;
+    }
 }
