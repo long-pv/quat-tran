@@ -91,14 +91,19 @@ get_header();
 							<?php endif; ?>
 						</div>
 
-						<div class="product_summary">
-							<h3 class="h4 product_summary_title">
-								Đặc điểm nổi bật
-							</h3>
-							<div class="editor">
-								<?php echo $product->get_short_description() ?? 'N/A'; ?>
+						<?php
+						$short_description = $product->get_short_description();
+						if (!empty($short_description)):
+							?>
+							<div class="product_summary">
+								<h3 class="h4 product_summary_title">
+									Đặc điểm nổi bật
+								</h3>
+								<div class="editor">
+									<?php echo $short_description; ?>
+								</div>
 							</div>
-						</div>
+						<?php endif; ?>
 
 						<!-- liên hệ -->
 						<div class="product-contact">
@@ -125,7 +130,7 @@ $full_description = $product->get_description();
 		<div class="product_info_wrap">
 			<h2 class="h2 title_description">Mô tả</h2>
 			<div class="editor">
-				<?php echo $full_description; ?>
+				<?php echo !empty($full_description) ? $full_description : 'N/A'; ?>
 			</div>
 		</div>
 	</div>
