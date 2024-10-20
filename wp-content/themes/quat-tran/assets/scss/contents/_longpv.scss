@@ -435,7 +435,7 @@
 }
 
 .featured_projects_block {
-    padding: 16px 24px;
+    padding: 24px 16px;
     background-color: $secondary;
     border-radius: 4px;
 
@@ -564,7 +564,7 @@
     color: #fff;
     border-radius: 4px 4px 0px 0px;
     text-transform: uppercase;
-    padding: 0px 20px;
+    padding: 2px 20px;
     background-color: $primary;
     margin-bottom: 0px;
 }
@@ -760,4 +760,32 @@
 
 .product_summary {
     margin-bottom: 24px;
+}
+
+.product-contact {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    float: unset !important;
+
+    @include media-breakpoint-down(sm) {
+        flex-direction: column;
+    }
+}
+
+.product-contact .contact-btn {
+    flex: 1;
+    margin: 0px;
+    border: 1px solid $success;
+    transition: all 0.5s;
+    background-color: #fff;
+    width: 50%;
+
+    @include media-breakpoint-down(sm) {
+        width: 100%;
+    }
+}
+
+.title_description {
+    text-transform: uppercase;
 }

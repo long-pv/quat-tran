@@ -100,14 +100,14 @@ get_header();
 							</div>
 						</div>
 
-						<!-- Nút tư vấn sản phẩm -->
+						<!-- liên hệ -->
 						<div class="product-contact">
-							<a href="tel:0866081858"><span class="icons icon-phone"></span> Tư vấn sản
-								phẩm</a>
-							<a href="/danh-sach-dai-ly-chinh-hang"><span class="icons icon-location"></span>
-								Tìm
-								điểm
-								bán</a>
+							<a href="tel:0866081858" class="contact-btn">
+								<span class="icons icon-phone"></span> Tư vấn sản phẩm
+							</a>
+							<a href="/danh-sach-dai-ly-chinh-hang" class="contact-btn">
+								<span class="icons icon-location"></span> Tìm điểm bán
+							</a>
 						</div>
 					</div>
 				</div>
@@ -117,61 +117,70 @@ get_header();
 </section>
 <!-- / Single Product -->
 
-<!-- Related Product -->
-<section class="secSpace">
-	<div class="related-product">
-		<div class="container">
-			<div class="related-product-title titleProduct">
-				<h2 class="titleProduct__title">
-					<a href="#">
-						Sản phẩm liên quan
-					</a>
-				</h2>
+<?php
+$full_description = $product->get_description();
+?>
+<section class="secSpace pt-0">
+	<div class="container">
+		<div class="product_info_wrap">
+			<h2 class="h2 title_description">Mô tả</h2>
+			<div class="editor">
+				<?php echo $full_description; ?>
 			</div>
-			<?php
-			// Lấy danh sách các danh mục của sản phẩm hiện tại
-			$terms = wp_get_post_terms($product_id, 'product_cat');
-
-			// Kiểm tra xem sản phẩm có thuộc danh mục nào không
-			if (!empty($terms)) {
-				// Lấy slug của các danh mục
-				$term_ids = wp_list_pluck($terms, 'slug');
-
-				// Thiết lập query để lấy các sản phẩm thuộc cùng danh mục, trừ sản phẩm hiện tại
-				$args = array(
-					'post_type' => 'product',
-					'posts_per_page' => 10, // Số lượng sản phẩm muốn hiển thị
-					'post__not_in' => array($product_id), // Loại trừ sản phẩm hiện tại
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'product_cat',
-							'field' => 'slug',
-							'terms' => $term_ids, // Lọc theo danh mục của sản phẩm hiện tại
-						),
-					),
-				);
-
-				$query = new WP_Query($args);
-
-				if ($query->have_posts()) {
-					echo '<div class="product-slider">';
-					while ($query->have_posts()) {
-						$query->the_post();
-						get_template_part('template-parts/content-product');
-					}
-					echo '</div>';
-				}
-
-				wp_reset_postdata();
-			} else {
-				// Nếu sản phẩm không có danh mục nào
-				echo '<p>No related products found.</p>';
-			}
-			?>
 		</div>
 	</div>
 </section>
-<!-- / Related Product -->
+
+<?php
+$terms = wp_get_post_terms($product_id, 'product_cat');
+if ($terms) {
+	$term_ids = wp_list_pluck($terms, 'slug');
+} else {
+	$term_ids = [];
+}
+
+$args = array(
+	'post_type' => 'product',
+	'posts_per_page' => 10,
+	'post__not_in' => array($product_id),
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'product_cat',
+			'field' => 'slug',
+			'terms' => $term_ids,
+		),
+	),
+);
+
+$query = new WP_Query($args);
+
+if ($query->have_posts()):
+	?>
+	<section class="secSpace pt-0">
+		<div class="container">
+			<div class="sec_heading">
+				<h2 class="h3 sec_title">
+					Sản phẩm liên quan
+				</h2>
+			</div>
+
+
+			<div class="product_list_slider">
+				<?php
+				while ($query->have_posts()):
+					$query->the_post(); ?>
+					<div>
+						<div class="product_item">
+							<?php get_template_part('template-parts/content-product'); ?>
+						</div>
+					</div>
+				<?php endwhile;
+				wp_reset_postdata();
+				?>
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
 
 <?php
 get_footer();
