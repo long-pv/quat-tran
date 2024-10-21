@@ -343,3 +343,12 @@ function filter_search_to_products($query)
 	}
 }
 add_action('pre_get_posts', 'filter_search_to_products');
+
+function redirect_woocommerce_pages_to_404()
+{
+	if (is_shop() || is_cart() || is_checkout() || is_account_page()) {
+		wp_redirect(home_url('/404'), 301); // Chuyển hướng đến trang 404
+		exit; // Kết thúc để đảm bảo không tiếp tục thực thi mã
+	}
+}
+add_action('template_redirect', 'redirect_woocommerce_pages_to_404');

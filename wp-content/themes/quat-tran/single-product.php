@@ -147,9 +147,6 @@ get_header();
 </section>
 <!-- / Single Product -->
 
-<?php
-$full_description = apply_filters('the_content', $product->get_description());
-?>
 <section class="secSpace pt-0">
 	<div class="container">
 		<div class="product_info_wrap">
@@ -169,7 +166,10 @@ $full_description = apply_filters('the_content', $product->get_description());
 				<div class="tab-content">
 					<div class="tab-pane active" id="tabs-1" role="tabpanel">
 						<div class="editor">
-							<?php echo !empty($full_description) ? $full_description : 'N/A'; ?>
+							<?php
+							$full_description = apply_filters('the_content', $product->get_description());
+							echo !empty($full_description) ? $full_description : 'Nội dung đang được cập nhật...';
+							?>
 						</div>
 					</div>
 					<div class="tab-pane" id="tabs-2" role="tabpanel">
