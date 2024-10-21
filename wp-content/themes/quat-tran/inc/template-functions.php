@@ -53,7 +53,7 @@ function register_cpt_post_types()
 	//     register_ctx($ctx, $data);
 	// }
 }
-add_action('init', 'register_cpt_post_types');
+// add_action('init', 'register_cpt_post_types');
 
 function register_cpt($post_type, $data = [])
 {
