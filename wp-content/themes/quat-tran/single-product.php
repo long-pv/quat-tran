@@ -40,6 +40,15 @@ get_header();
 								</div>
 							<?php endforeach; ?>
 						</div>
+					<?php else: ?>
+						<div class="product_info_img">
+							<?php
+							$image_id = get_post_thumbnail_id(get_the_ID());
+							$image_html = wp_get_attachment_image($image_id, 'full');
+							echo $image_html;
+							?>
+						</div>
+
 					<?php endif; ?>
 				</div>
 				<div class="col-lg-6">
@@ -72,7 +81,7 @@ get_header();
 						</div>
 
 						<div class="product_info_price h1">
-							<span class="price_title">Giá:</span>
+							<!-- <span class="price_title">Giá:</span> -->
 							<?php
 							$regular_price = $product->get_regular_price();
 							$sale_price = $product->get_sale_price();
@@ -97,9 +106,9 @@ get_header();
 							$short_description = apply_filters('the_content', $short_description);
 							?>
 							<div class="product_summary">
-								<h3 class="h4 product_summary_title">
+								<!-- <h3 class="h4 product_summary_title">
 									Đặc điểm nổi bật
-								</h3>
+								</h3> -->
 								<div class="editor">
 									<?php echo $short_description; ?>
 								</div>
@@ -117,7 +126,8 @@ get_header();
 							<?php
 							$sales_agent = get_field('sales_agent', 'option') ?? 'javascript:void(0);';
 							?>
-							<a href="<?php echo $sales_agent; ?>" target="<?php echo $sales_agent ? '_blank' : ''; ?>" class="contact-btn">
+							<a href="<?php echo $sales_agent; ?>" target="<?php echo $sales_agent ? '_blank' : ''; ?>"
+								class="contact-btn">
 								<span class="icons icon-location"></span> Tìm điểm bán
 							</a>
 							<?php
@@ -143,9 +153,54 @@ $full_description = apply_filters('the_content', $product->get_description());
 <section class="secSpace pt-0">
 	<div class="container">
 		<div class="product_info_wrap">
-			<h2 class="h2 title_description">Mô tả</h2>
-			<div class="editor">
-				<?php echo !empty($full_description) ? $full_description : 'N/A'; ?>
+			<div class="product_content">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+							Thông tin sản phẩm
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+							Thông số kỹ thuật
+						</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tabs-1" role="tabpanel">
+						<div class="editor">
+							<?php echo !empty($full_description) ? $full_description : 'N/A'; ?>
+						</div>
+					</div>
+					<div class="tab-pane" id="tabs-2" role="tabpanel">
+						<?php
+						$specifications = get_field('specifications');
+						if ($specifications):
+							?>
+							<div class="editor">
+								<table class="table table-striped table-bordered" border="1" cellspacing="1"
+									cellpadding="1">
+									<tbody>
+										<?php foreach ($specifications as $item): ?>
+											<tr>
+												<td width="30%">
+													<?php echo $item['title']; ?>
+												</td>
+												<td>
+													<?php echo $item['content']; ?>
+												</td>
+											</tr>
+											<?php
+										endforeach;
+										?>
+									</tbody>
+								</table>
+							</div>
+						<?php else: ?>
+							<p>Nội dung đang được cập nhật...</p>
+						<?php endif; ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -179,7 +234,7 @@ if ($query->have_posts()):
 	<section class="secSpace pt-0">
 		<div class="container">
 			<div class="sec_heading">
-				<h2 class="h3 sec_title">
+				<h2 class="sec_title">
 					Sản phẩm liên quan
 				</h2>
 			</div>

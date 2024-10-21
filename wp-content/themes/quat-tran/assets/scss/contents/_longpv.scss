@@ -416,7 +416,7 @@
             }
 
             &::before {
-                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.57 5.93018L3.5 12.0002L9.57 18.0702' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20.4999 12H3.66992' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.57 5.93018L3.5 12.0002L9.57 18.0702' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20.4999 12H3.66992' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
             }
         }
 
@@ -428,7 +428,7 @@
             }
 
             &::before {
-                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4302 18.0698L20.5002 11.9998L14.4302 5.92982' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3.5 12L20.33 12' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4302 18.0698L20.5002 11.9998L14.4302 5.92982' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3.5 12L20.33 12' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
             }
         }
     }
@@ -528,7 +528,7 @@
             }
 
             &::before {
-                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.57 5.93018L3.5 12.0002L9.57 18.0702' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20.4999 12H3.66992' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.57 5.93018L3.5 12.0002L9.57 18.0702' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20.4999 12H3.66992' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
             }
         }
 
@@ -540,7 +540,7 @@
             }
 
             &::before {
-                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4302 18.0698L20.5002 11.9998L14.4302 5.92982' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3.5 12L20.33 12' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4302 18.0698L20.5002 11.9998L14.4302 5.92982' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3.5 12L20.33 12' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
             }
         }
     }
@@ -564,9 +564,10 @@
     color: #fff;
     border-radius: 4px 4px 0px 0px;
     text-transform: uppercase;
-    padding: 2px 20px;
+    padding: 8px 20px;
     background-color: $primary;
     margin-bottom: 0px;
+    font-size: 20px !important;
 }
 
 .sec_link {
@@ -649,7 +650,7 @@
             left: -15px;
 
             &::before {
-                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.57 5.93018L3.5 12.0002L9.57 18.0702' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20.4999 12H3.66992' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.57 5.93018L3.5 12.0002L9.57 18.0702' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20.4999 12H3.66992' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
             }
         }
 
@@ -657,7 +658,7 @@
             right: -15px;
 
             &::before {
-                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4302 18.0698L20.5002 11.9998L14.4302 5.92982' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3.5 12L20.33 12' stroke='%232E2E2E' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4302 18.0698L20.5002 11.9998L14.4302 5.92982' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3.5 12L20.33 12' stroke='%231A3865' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
             }
         }
     }
@@ -744,7 +745,7 @@
 .product_info_price {
     margin-bottom: 32px;
     margin-top: 32px;
-    color: #e51b24;
+    color: $price;
     font-weight: 700;
 
     .regular-price-sale {
@@ -825,4 +826,89 @@
         left: 16px !important;
         bottom: 24px !important;
     }
+}
+
+.productItem__price {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+
+    .regular-price-sale {
+        text-decoration: line-through;
+        color: #c4c4c4;
+    }
+
+    .contact-text {
+        color: $price;
+    }
+
+    .regular-price {
+        color: $primary;
+    }
+}
+
+.featured_projects_heading {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+
+    .sec_title {
+        border-radius: 4px;
+        text-align: center;
+    }
+}
+
+.product_info_img {
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+}
+
+.product_content {
+    .nav-link {
+        padding: 0px;
+        padding-bottom: 4px;
+        border: none !important;
+        font-size: 18px;
+        font-weight: 700;
+        border-bottom: 4px solid $info !important;
+        background-color: $info !important;
+    }
+
+    .nav-link.active {
+        color: $primary;
+        border-bottom: 4px solid $primary !important;
+    }
+
+    .nav.nav-tabs {
+        column-gap: 32px;
+        row-gap: 8px;
+        flex-wrap: nowrap !important;
+        border-bottom: 1px solid $primary !important;
+        align-items: center;
+
+        @include media-breakpoint-down(md) {
+            column-gap: 16px;
+        }
+    }
+
+    .nav-tabs .nav-item {
+        margin-bottom: 0px !important;
+    }
+
+    .tab-content {
+        padding-top: 24px;
+    }
+}
+
+.supports ul li a .icon {
+    border-radius: unset !important;
+}
+
+.fixed_left .btc_text {
+    background-color: $secondary !important;
 }

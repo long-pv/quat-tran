@@ -17,13 +17,20 @@ global $product;
             </a>
         </h3>
         <div class="productItem__price">
-            <!-- Price -->
-            <?php if ($product->is_on_sale()): ?>
-                <span class="sale-price"><?php echo wc_price($product->get_sale_price()); ?></span>
+            <?php
+            $regular_price = $product->get_regular_price();
+            $sale_price = $product->get_sale_price();
+
+            if ($regular_price == 0): ?>
+                <span class="contact-text">Liên hệ</span>
+            <?php elseif ($product->is_on_sale()): ?>
+                <span class="regular-price-sale">
+                    <?php echo wc_price($regular_price); ?>
+                </span>
+                <span class="regular-price"><?php echo wc_price($sale_price); ?></span>
             <?php else: ?>
-                <span class="regular-price"><?php echo wc_price($product->get_regular_price()); ?></span>
+                <span class="regular-price"><?php echo wc_price($regular_price); ?></span>
             <?php endif; ?>
-            <!-- / Price -->
         </div>
     </div>
 </article>

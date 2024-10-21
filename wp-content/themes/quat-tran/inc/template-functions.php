@@ -198,6 +198,17 @@ function wp_breadcrumbs()
 					}
 				}
 
+				if ($post_type == 'product') {
+					$categories = get_the_terms($post->ID, 'product_cat');
+
+					if (!empty($categories)) {
+						$first_category = $categories[0];
+						echo '<a href="' . get_term_link($first_category->term_id, 'product_cat') . '">'
+							. $first_category->name .
+							'</a>' . $delimiter . ' ';
+					}
+				}
+
 				echo $before . $post->post_title . $after;
 				break;
 
@@ -268,27 +279,6 @@ function pagination($query = null)
 	wp_reset_postdata();
 }
 
-function img_url($img = '', $size = 'medium')
-{
-	$size = strtolower($size);
-
-	if (empty($size) || !in_array($size, ['thumbnail', 'medium', 'large', 'full'])) {
-		$size = 'medium';
-	}
-
-	if (is_array($img) && !empty($img['ID'])) {
-		$url = wp_get_attachment_image_url($img['ID'], $size);
-	} elseif (is_numeric($img)) {
-		$url = wp_get_attachment_image_url($img, $size);
-	} elseif (filter_var($img, FILTER_VALIDATE_URL)) {
-		$id = attachment_url_to_postid($img);
-		$url = $id ? wp_get_attachment_image_url($id, $size) : $img;
-	} else {
-		$url = '';
-	}
-	return $url ?: NO_IMAGE;
-}
-
 
 // Hủy bỏ nút tăng giảm số lượng sản phẩm
 add_filter('woocommerce_is_sold_individually', 'disable_quantity_field', 10, 2);
@@ -344,3 +334,12 @@ function set_post_views($postID)
 		update_post_meta($postID, $countKey, $count);
 	}
 }
+
+function filter_search_to_products($query)
+{
+	if (!is_admin() && $query->is_search() && $query->is_main_query()) {
+		$query->set('post_type', 'product');
+		$query->set('posts_per_page', 20);
+	}
+}
+add_action('pre_get_posts', 'filter_search_to_products');

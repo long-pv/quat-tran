@@ -60,9 +60,11 @@ if ($featured_projects):
     <section class="secSpace">
         <div class="container">
             <div class="featured_projects_block">
-                <h2 class="h3 featured_projects_title">
-                    Top sản phẩm tiêu biểu
-                </h2>
+                <div class="featured_projects_heading">
+                    <h2 class="sec_title">
+                        Top sản phẩm tiêu biểu
+                    </h2>
+                </div>
                 <div class="featured_projects">
                     <?php
                     if ($query->have_posts()):
@@ -112,7 +114,7 @@ if ($product_categories):
             <section class="secSpace <?php echo ($key % 2 == 0) ? 'bg-info' : ''; ?>">
                 <div class="container">
                     <div class="sec_heading">
-                        <h2 class="h3 sec_title">
+                        <h2 class="sec_title">
                             <?php echo $term->name; ?>
                         </h2>
                         <a class="sec_link" href="<?php echo $term_link; ?>">
