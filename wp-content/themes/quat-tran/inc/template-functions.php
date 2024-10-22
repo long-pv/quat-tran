@@ -352,3 +352,17 @@ function redirect_woocommerce_pages_to_404()
 	}
 }
 add_action('template_redirect', 'redirect_woocommerce_pages_to_404');
+
+add_filter('woocommerce_admin_features', function ($features) {
+	return array_values(
+		array_filter($features, function ($feature) {
+			return !in_array($feature, ['marketing', 'analytics', 'analytics-dashboard', 'wcpay']);
+		})
+	);
+});
+
+function remove_wc_payments_menu()
+{
+	remove_menu_page('wc-admin&path=/wc-pay-welcome-page');
+}
+add_action('admin_menu', 'remove_wc_payments_menu', 99);
