@@ -109,7 +109,7 @@ get_header();
 								<!-- <h3 class="h4 product_summary_title">
 									Đặc điểm nổi bật
 								</h3> -->
-								<div class="editor">
+								<div class="editor editor_table_striped">
 									<?php echo $short_description; ?>
 								</div>
 							</div>
@@ -177,9 +177,8 @@ get_header();
 						$specifications = get_field('specifications');
 						if ($specifications):
 							?>
-							<div class="editor">
-								<table class="table table-striped table-bordered" border="1" cellspacing="1"
-									cellpadding="1">
+							<div class="editor editor_table_striped">
+								<table>
 									<tbody>
 										<?php foreach ($specifications as $item): ?>
 											<tr>

@@ -777,9 +777,10 @@
 .product-contact .contact-btn {
     flex: 1;
     margin: 0px;
-    border: 1px solid $success;
+    border: none !important;
     transition: all 0.5s;
-    background-color: #fff;
+    background-color: $primary;
+    color: #fff !important;
     width: 50%;
     gap: 8px;
     padding: 2px 16px;
@@ -911,4 +912,20 @@
 
 .fixed_left .btc_text {
     background-color: $secondary !important;
+}
+
+.editor_table_striped {
+    table {
+        border: 1px solid #dee2e6 !important;
+        color: $body !important;
+        background-color: #fff !important;
+
+        tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05) !important;
+        }
+
+        td {
+            border: 1px solid #dee2e6 !important;
+        }
+    }
 }

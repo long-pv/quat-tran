@@ -64,14 +64,16 @@ $categories = get_the_category($post_id);
 
 
 <?php
+$terms = wp_get_post_terms($post_id, 'category', array('fields' => 'ids'));
 $args_latest_posts = array(
 	'post_type' => 'post',
 	'posts_per_page' => '4',
 	'post__not_in' => $arrPost,
-	'meta_query' => array(
+	'tax_query' => array(
 		array(
-			'key' => '_thumbnail_id',
-			'compare' => 'EXISTS',
+			'taxonomy' => 'category',
+			'field' => 'term_id',
+			'terms' => $terms,
 		),
 	),
 );
