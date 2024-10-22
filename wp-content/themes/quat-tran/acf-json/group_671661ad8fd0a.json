@@ -50,7 +50,7 @@
                     "label": "Content",
                     "name": "content",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -61,9 +61,9 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "rows": 4,
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
+                    "new_lines": "br",
                     "parent_repeater": "field_671661af16c87"
                 }
             ]
@@ -87,5 +87,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729521732
+    "modified": 1729574519
 }
