@@ -21,8 +21,9 @@ if ($footer):
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <a href="/" class="footer__logo">
-                        <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.svg'; ?>" alt="logo">
+                    <a href="/" class="footer__logo" aria-label="logo footer">
+                        <img width="100" height="50"
+                            src="<?php echo get_template_directory_uri() . '/assets/images/logo.svg'; ?>" alt="logo">
                     </a>
                 </div>
                 <div class="col-lg-3">

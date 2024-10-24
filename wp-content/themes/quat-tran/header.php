@@ -37,9 +37,9 @@
 			<div class="header__inner">
 				<div class="row no-gutters">
 					<div class="col-6 col-xl-3">
-						<a href="<?php echo home_url(); ?>" class="header__logo">
+						<a href="<?php echo home_url(); ?>" class="header__logo" aria-label="logo image">
 							<?php $logo_url = get_template_directory_uri() . '/assets/images/logo_white.svg'; ?>
-							<img src="<?php echo $logo_url; ?>" alt="logo">
+							<img width="100" height="50" src="<?php echo $logo_url; ?>" alt="logo">
 						</a>
 					</div>
 
@@ -49,7 +49,7 @@
 								<form role="search" method="get" action="<?php echo home_url('/'); ?>">
 									<input type="text" name="s" placeholder="Nhập từ khóa tìm kiếm..."
 										value="<?php the_search_query(); ?>" required />
-									<button type="submit">
+									<button type="submit" aria-label="button icon">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 											<path fill="#ffffff"
 												d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
