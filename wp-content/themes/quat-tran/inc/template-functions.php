@@ -178,7 +178,7 @@ function wp_breadcrumbs()
 		echo '<div id="breadcrumbs" class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">';
 
 		$homeLink = home_url();
-		echo '<a href="' . $homeLink . '">' . $home . '</a>' . $delimiter . ' ';
+		echo '<a aria-label="' . $home . '" href="' . $homeLink . '">' . $home . '</a>' . $delimiter . ' ';
 
 		switch (true) {
 			case is_category() || is_archive():
@@ -194,7 +194,7 @@ function wp_breadcrumbs()
 
 					if (!empty($categories)) {
 						$first_category = $categories[0];
-						echo '<a href="' . get_category_link($first_category->term_id) . '">' . $first_category->name . '</a>' . $delimiter . ' ';
+						echo '<a aria-label="' . $first_category->name . '" href="' . get_category_link($first_category->term_id) . '">' . $first_category->name . '</a>' . $delimiter . ' ';
 					}
 				}
 
@@ -203,7 +203,7 @@ function wp_breadcrumbs()
 
 					if (!empty($categories)) {
 						$first_category = $categories[0];
-						echo '<a href="' . get_term_link($first_category->term_id, 'product_cat') . '">'
+						echo '<a aria-label="' . $first_category->name . '" href="' . get_term_link($first_category->term_id, 'product_cat') . '">'
 							. $first_category->name .
 							'</a>' . $delimiter . ' ';
 					}
@@ -222,7 +222,7 @@ function wp_breadcrumbs()
 				break;
 
 			case is_search():
-				echo $before . 'Search' . $after;
+				echo $before . 'Tìm kiếm' . $after;
 				break;
 
 			case is_404():
@@ -243,7 +243,7 @@ function generate_page_parent($parent_id, $delimiter)
 
 	while ($parent_id) {
 		$page = get_post($parent_id);
-		$breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>';
+		$breadcrumbs[] = '<a aria-label="' . get_the_title($page->ID) . '" href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>';
 		$parent_id = $page->post_parent;
 	}
 
@@ -366,3 +366,24 @@ function remove_wc_payments_menu()
 	remove_menu_page('wc-admin&path=/wc-pay-welcome-page');
 }
 add_action('admin_menu', 'remove_wc_payments_menu', 99);
+
+function img_url($img = '', $size = 'medium')
+{
+	$size = strtolower($size);
+
+	if (empty($size) || !in_array($size, ['thumbnail', 'medium', 'large', 'full'])) {
+		$size = 'medium';
+	}
+
+	if (is_array($img) && !empty($img['ID'])) {
+		$url = wp_get_attachment_image_url($img['ID'], $size);
+	} elseif (is_numeric($img)) {
+		$url = wp_get_attachment_image_url($img, $size);
+	} elseif (filter_var($img, FILTER_VALIDATE_URL)) {
+		$id = attachment_url_to_postid($img);
+		$url = $id ? wp_get_attachment_image_url($id, $size) : $img;
+	} else {
+		$url = '';
+	}
+	return $url ?: NO_IMAGE;
+}

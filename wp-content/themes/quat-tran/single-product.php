@@ -28,7 +28,8 @@ get_header();
 						<div class="product-gallery">
 							<?php foreach ($attachment_ids as $attachment_id): ?>
 								<div class="gallery-item">
-									<?php echo wp_get_attachment_image($attachment_id, 'full'); ?>
+									<img width="400" height="400" src="<?php echo img_url($attachment_id, 'large') ?>"
+										alt="gallery large item <?php echo $attachment_id; ?>">
 								</div>
 							<?php endforeach; ?>
 						</div>
@@ -36,7 +37,8 @@ get_header();
 						<div class="product-thumbnails">
 							<?php foreach ($attachment_ids as $attachment_id): ?>
 								<div class="thumbnail-item">
-									<?php echo wp_get_attachment_image($attachment_id, 'thumbnail'); ?>
+									<img width="200" height="200" src="<?php echo img_url($attachment_id, 'thumbnail') ?>"
+										alt="gallery thumbnail item <?php echo $attachment_id; ?>">
 								</div>
 							<?php endforeach; ?>
 						</div>
@@ -44,9 +46,9 @@ get_header();
 						<div class="product_info_img">
 							<?php
 							$image_id = get_post_thumbnail_id(get_the_ID());
-							$image_html = wp_get_attachment_image($image_id, 'full');
-							echo $image_html;
 							?>
+							<img width="400" height="400" src="<?php echo img_url($image_id, 'large') ?>"
+								alt="<?php the_title(); ?>">
 						</div>
 
 					<?php endif; ?>

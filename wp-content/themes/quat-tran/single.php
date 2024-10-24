@@ -48,7 +48,8 @@ $categories = get_the_category($post_id);
 							</svg>
 						</span>
 
-						<a href="<?php echo get_category_link($first_category->term_id); ?>" class="text">
+						<a href="<?php echo get_category_link($first_category->term_id); ?>" class="text"
+							aria-label="<?php echo $first_category->name; ?>">
 							<?php echo $first_category->name; ?>
 						</a>
 					</div>

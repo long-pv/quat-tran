@@ -36,8 +36,12 @@
 		return false;
 	});
 
+	$(".product-gallery, .product-thumbnails, .sectionBanner__slider, .featured_projects, .product_list_slider").on("init", function (event, slick) {
+		$(this).css("visibility", "visible");
+	});
+
 	// Banner
-	$("#sectionBanner__slider").slick({
+	$(".sectionBanner__slider").slick({
 		dots: false,
 		arrows: false,
 		autoplay: true,

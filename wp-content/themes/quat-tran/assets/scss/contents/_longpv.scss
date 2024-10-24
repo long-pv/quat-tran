@@ -937,3 +937,15 @@
         background-image: linear-gradient(180deg, transparent, $info);
     }
 }
+
+.home_title {
+    position: fixed;
+    top: 0px;
+    right: -500px;
+}
+
+.sectionBanner__slider,
+.featured_projects,
+.product_list_slider {
+    visibility: hidden;
+}

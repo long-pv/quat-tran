@@ -16,6 +16,8 @@
 get_header();
 ?>
 
+<h1 class="home_title"><?php echo get_bloginfo('name') . ' - ' . get_bloginfo('description'); ?></h1>
+
 <!-- Banner -->
 <?php
 $banner = get_field('banner');
@@ -30,10 +32,8 @@ if ($banner):
                     ?>
                     <div>
                         <div class="sectionBanner__item">
-                            <?php
-                            $image_html = wp_get_attachment_image($item['banner_image'], 'full');
-                            echo $image_html;
-                            ?>
+                            <img width="1000" height="500" src="<?php echo img_url($item['banner_image'], 'large'); ?>"
+                                alt="Banner no <?php echo $index + 1; ?>">
                         </div>
                     </div>
                     <?php
@@ -117,7 +117,7 @@ if ($product_categories):
                         <h2 class="sec_title">
                             <?php echo $term->name; ?>
                         </h2>
-                        <a class="sec_link" href="<?php echo $term_link; ?>">
+                        <a class="sec_link" href="<?php echo $term_link; ?>" aria-label="<?php echo $term->name; ?>">
                             Xem thêm <?php echo $xem_them > 0 ? (string) $xem_them . ' sản phẩm' : ''; ?>
                         </a>
                     </div>

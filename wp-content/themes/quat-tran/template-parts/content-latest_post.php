@@ -6,19 +6,19 @@ $categories = get_the_category($post_id);
 <article id="post-<?php echo $post_id; ?>" class="singlePost">
 	<div class="row singlePost__row">
 		<div class="col-6 col-md-4 col-lg-5">
-			<a href="<?php the_permalink(); ?>" class="imgGroup">
+			<a href="<?php the_permalink(); ?>" class="imgGroup" aria-label="<?php the_title(); ?>">
 				<?php
 				$image_id = get_post_thumbnail_id($post_id);
-				$image_html = wp_get_attachment_image($image_id, 'full');
-				echo $image_html;
 				?>
+				<img width="300" height="300" src="<?php echo img_url($image_id, 'medium'); ?>"
+					alt="<?php the_title(); ?>">
 			</a>
 		</div>
 
 		<div class="col-6 col-md-8 col-lg-7">
 			<div class="singlePost__content">
 				<h3 class="singlePost__title mb-3">
-					<a class="line-2" href="<?php the_permalink(); ?>">
+					<a class="line-2" href="<?php the_permalink(); ?>" aria-label="<?php the_title(); ?>">
 						<?php the_title(); ?>
 					</a>
 				</h3>
@@ -48,7 +48,8 @@ $categories = get_the_category($post_id);
 								</svg>
 							</span>
 
-							<a href="<?php echo get_category_link($first_category->term_id); ?>" class="text">
+							<a href="<?php echo get_category_link($first_category->term_id); ?>" class="text"
+								aria-label="<?php echo $first_category->name; ?>">
 								<?php echo $first_category->name; ?>
 							</a>
 						</div>
