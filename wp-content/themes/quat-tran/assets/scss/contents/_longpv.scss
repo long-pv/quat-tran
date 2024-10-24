@@ -929,3 +929,11 @@
         }
     }
 }
+
+.readmore_eidtor_content {
+    overflow: hidden !important;
+
+    &~.readmore_content_exists.rm_down:before {
+        background-image: linear-gradient(180deg, transparent, $info);
+    }
+}

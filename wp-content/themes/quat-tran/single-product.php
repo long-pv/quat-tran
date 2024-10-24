@@ -165,11 +165,13 @@ get_header();
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="tabs-1" role="tabpanel">
-						<div class="editor">
-							<?php
-							$full_description = apply_filters('the_content', $product->get_description());
-							echo !empty($full_description) ? $full_description : 'Nội dung đang được cập nhật...';
-							?>
+						<div class="readmore_eidtor_content">
+							<div class="editor">
+								<?php
+								$full_description = apply_filters('the_content', $product->get_description());
+								echo !empty($full_description) ? $full_description : 'Nội dung đang được cập nhật...';
+								?>
+							</div>
 						</div>
 					</div>
 					<div class="tab-pane" id="tabs-2" role="tabpanel">

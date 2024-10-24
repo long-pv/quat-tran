@@ -119,12 +119,22 @@
 	});
 
 	$(".readmore_content").readmore({
-		moreLink: '<div class="readmore_content_exists rm_down"><button>Đọc thêm <i class="fas fa-caret-down"></i></button></div>',
-		lessLink: '<div class="readmore_content_exists rm_up"><button>Thu gọn <i class="fas fa-caret-up"></i></button></div>',
+		moreLink: '<div class="readmore_content_exists rm_down"><button>Đọc thêm</button></div>',
+		lessLink: '<div class="readmore_content_exists rm_up"><button>Thu gọn</button></div>',
 		collapsedHeight: 150,
 		afterToggle: function (trigger, element, expanded) {
 			if (!expanded) {
-				// The "Close" link was clicked
+				$("html, body").animate({ scrollTop: element.offset().top }, { duration: 100 });
+			}
+		},
+	});
+
+	$(".readmore_eidtor_content").readmore({
+		moreLink: '<div class="readmore_content_exists rm_down"><button>Đọc thêm</button></div>',
+		lessLink: '<div class="readmore_content_exists rm_up"><button>Thu gọn</button></div>',
+		collapsedHeight: 700,
+		afterToggle: function (trigger, element, expanded) {
+			if (!expanded) {
 				$("html, body").animate({ scrollTop: element.offset().top }, { duration: 100 });
 			}
 		},
