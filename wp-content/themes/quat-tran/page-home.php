@@ -32,8 +32,13 @@ if ($banner):
                     ?>
                     <div>
                         <div class="sectionBanner__item">
-                            <img width="1000" height="500" src="<?php echo img_url($item['banner_image'], 'large'); ?>"
-                                alt="Banner no <?php echo $index + 1; ?>">
+                            <picture>
+                                <source media="(min-width:768px)"
+                                    srcset="<?php echo img_url($item['banner_image'], 'medium'); ?>">
+                                <img width="1000" height="500" loading="lazy"
+                                    src="<?php echo img_url($item['banner_image'], 'large'); ?>"
+                                    alt="Banner no <?php echo $index + 1; ?>">
+                            </picture>
                         </div>
                     </div>
                     <?php

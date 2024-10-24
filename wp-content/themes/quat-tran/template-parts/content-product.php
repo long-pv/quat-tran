@@ -7,7 +7,11 @@ global $product;
         <?php
         $image_id = get_post_thumbnail_id(get_the_ID());
         ?>
-        <img width="300" height="300" src="<?php echo img_url($image_id, 'medium'); ?>" alt="<?php the_title(); ?>">
+        <picture>
+            <source media="(min-width:768px)" srcset="<?php echo img_url($image_id, 'medium'); ?>">
+            <img width="300" height="300" loading="lazy" src="<?php echo img_url($image_id, 'thumbnail'); ?>"
+                alt="<?php the_title(); ?>">
+        </picture>
     </a>
     <div class="productItem__content">
         <h3 class="h4 productItem__title" data-mh="title_product">
