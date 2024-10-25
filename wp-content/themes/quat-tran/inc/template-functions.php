@@ -167,7 +167,7 @@ function wp_breadcrumbs()
 	</span>
 	';
 
-	$home = __('Home', 'basetheme');
+	$home = __('Trang chủ', 'basetheme');
 	$before = '<span class="current">';
 	$after = '</span>';
 	if (!is_admin() && !is_home() && (!is_front_page() || is_paged())) {
