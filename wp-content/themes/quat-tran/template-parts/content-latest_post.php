@@ -41,7 +41,6 @@ $categories = get_the_category($post_id);
 
 					<?php
 					if (!empty($categories)):
-						$first_category = $categories[0];
 						?>
 						<div class="post_cat">
 							<span class="icon">
@@ -51,10 +50,14 @@ $categories = get_the_category($post_id);
 								</svg>
 							</span>
 
-							<a href="<?php echo get_category_link($first_category->term_id); ?>" class="text"
-								aria-label="<?php echo $first_category->name; ?>">
-								<?php echo $first_category->name; ?>
-							</a>
+							<div class="post_cat_list">
+								<?php
+								$links = array_map(function ($category) {
+									return '<a class="text" href="' . get_category_link($category->term_id) . '">' . $category->name . '</a>';
+								}, $categories);
+								echo implode(', ', $links);
+								?>
+							</div>
 						</div>
 						<?php
 					endif;
