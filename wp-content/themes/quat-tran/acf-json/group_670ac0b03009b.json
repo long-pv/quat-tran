@@ -47,7 +47,7 @@
                     "name": "banner_image",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "",
+                    "instructions": "Recommended size: 1200x400",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -64,7 +64,7 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "preview_size": "medium",
+                    "preview_size": "thumbnail",
                     "parent_repeater": "field_670ac0c081fe3"
                 }
             ]
@@ -181,5 +181,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729338482
+    "modified": 1730214266
 }
