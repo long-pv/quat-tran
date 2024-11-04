@@ -1103,3 +1103,187 @@
         }
     }
 }
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.gallery-item img {
+    display: block;
+    transition: all 0.5s;
+    transform: scale(1);
+}
+
+.gallery-item:hover img {
+    transition: transform 0.5s;
+    transform: scale(1.8);
+}
+
+.product_info_img {
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.product_info_img img {
+    display: block;
+    transition: all 0.5s;
+    transform: scale(1);
+}
+
+.product_info_img:hover img {
+    transform: scale(1.8);
+    transition: transform 0.5s;
+}
+
+.filter_mobile {
+    display: none;
+}
+
+.menu-filter__nav {
+    @include media-breakpoint-down(md) {
+        display: none !important;
+    }
+}
+
+.menu-filter .capt a {
+    @include media-breakpoint-down(md) {
+        display: inline-flex !important;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    $top_menu_mb: 46px;
+
+    .filter_mobile {
+        display: block;
+        position: fixed;
+        height: calc(100vh - 116px) !important;
+        width: 50%;
+        min-width: 250px;
+        max-width: 350px;
+        top: $top_menu_mb;
+        left: -100px;
+        background: #ffffff;
+        z-index: 9999;
+        padding: 24px;
+        transform: translateX(-100%);
+        transition: all 0.5s;
+        overflow-y: auto;
+        height: 100%;
+        box-shadow: 0px 32px 48px 0px rgba(0, 0, 0, 0.16);
+        -webkit-box-shadow: 0px 32px 48px 0px rgba(0, 0, 0, 0.16);
+        -moz-box-shadow: 0px 32px 48px 0px rgba(0, 0, 0, 0.16);
+
+        &.active {
+            transform: translateX(0%);
+            left: 0px;
+            transition: all 0.5s;
+        }
+
+        ul.menu {
+            padding: 0px;
+            margin: 0px;
+            list-style-type: none;
+            height: 100%;
+
+            &>li {
+                border-bottom: 1px solid #c0c0c0;
+
+                &:last-child() {
+                    border-bottom: none;
+                }
+
+                a {
+                    display: inline-flex;
+                    padding: 12px 0px;
+                    color: $primary;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                &.current-menu-parent,
+                &.current-menu-item,
+                &.current_page_item {
+                    &>a {
+                        font-weight: 700;
+                        color: $primary !important;
+                    }
+                }
+
+                &>ul {
+                    padding-left: 16px;
+                    margin: 0px;
+                    list-style-type: none;
+
+                    &>li {
+                        border-bottom: 1px solid #c0c0c0;
+
+                        &:last-child() {
+                            border-bottom: none;
+                        }
+
+                        &.current-menu-parent,
+                        &.current-menu-item,
+                        &.current_page_item {
+                            &>a {
+                                font-weight: 700;
+                                color: $primary !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.floating_mobile {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    z-index: 9999;
+
+    @include media-breakpoint-up(md) {
+        display: none !important;
+    }
+}
+
+.floating_mobile_item {
+    flex: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.floating_mobile_icon {
+    margin-bottom: 8px;
+
+    svg {
+        width: 20px !important;
+        height: auto !important;
+    }
+}
+
+.floating_mobile_title {
+    font-size: 12px;
+}
+
+#callNowButton,
+.supports,
+.back-top {
+    @include media-breakpoint-down(sm) {
+        display: none !important;
+    }
+}

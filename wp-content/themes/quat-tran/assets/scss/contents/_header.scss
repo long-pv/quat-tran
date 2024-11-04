@@ -219,13 +219,15 @@
 
     &__menusp {
         position: fixed;
-        height: calc(100vh - $top_menu_mb);
-        width: 70%;
+        height: calc(100vh - 116px) !important;
+        width: 50%;
+        min-width: 250px;
+        max-width: 400px;
         top: $top_menu_mb;
         right: -100px;
         background: #ffffff;
         z-index: 9999;
-        padding: 24px 24px 120px;
+        padding: 24px;
         transform: translateX(100%);
         transition: all 0.5s;
         overflow-y: auto;

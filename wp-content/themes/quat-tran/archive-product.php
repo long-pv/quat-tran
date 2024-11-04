@@ -36,6 +36,21 @@ get_header(); ?>
         </div>
     </div>
 
+    <div class="filter_mobile">
+        <?php
+        if (has_nav_menu('menu-filter')) {
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'menu-filter',
+                    'container' => 'nav',
+                    'container_class' => 'filter_mobile_nav',
+                    'depth' => 2,
+                )
+            );
+        }
+        ?>
+    </div>
+
     <div class="product-cat__wrapper product_cat_wrap">
         <div class="container">
             <div class="catalog_ordering">

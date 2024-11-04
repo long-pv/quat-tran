@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -24,7 +25,7 @@ get_header();
 					<?php
 					$attachment_ids = $product->get_gallery_image_ids();
 					if ($attachment_ids):
-						?>
+					?>
 						<div class="product-gallery">
 							<?php foreach ($attachment_ids as $attachment_id): ?>
 								<div class="gallery-item">
@@ -116,7 +117,7 @@ get_header();
 						$short_description = $product->get_short_description();
 						if (!empty($short_description)):
 							$short_description = apply_filters('the_content', $short_description);
-							?>
+						?>
 							<div class="product_summary">
 								<!-- <h3 class="h4 product_summary_title">
 									Đặc điểm nổi bật
@@ -190,7 +191,7 @@ get_header();
 						<?php
 						$specifications = get_field('specifications');
 						if ($specifications):
-							?>
+						?>
 							<div class="editor editor_table_striped">
 								<table>
 									<tbody>
@@ -203,7 +204,7 @@ get_header();
 													<?php echo $item['content']; ?>
 												</td>
 											</tr>
-											<?php
+										<?php
 										endforeach;
 										?>
 									</tbody>
@@ -243,7 +244,7 @@ $args = array(
 $query = new WP_Query($args);
 
 if ($query->have_posts()):
-	?>
+?>
 	<section class="secSpace pt-0">
 		<div class="container">
 			<div class="sec_heading">
@@ -272,3 +273,43 @@ if ($query->have_posts()):
 
 <?php
 get_footer();
+?>
+<script>
+	jQuery(document).ready(function($) {
+		$(document).on('mousemove', '.product-gallery', function(e) {
+			var $this = $(this),
+				$img = $this.find('img'),
+				offsetX = e.offsetX,
+				offsetY = e.offsetY,
+				width = $this.width(),
+				height = $this.height();
+
+			var moveX = ((offsetX / width) * 100);
+			var moveY = ((offsetY / height) * 100);
+
+			$img.css('transform-origin', moveX + '% ' + moveY + '%');
+		});
+
+		$(document).on('mouseleave', '.product-gallery', function() {
+			$(this).find('img').css('transform-origin', 'center center');
+		});
+
+		$('.product_info_img').mousemove(function(e) {
+			var $this = $(this),
+				$img = $this.find('img'),
+				offsetX = e.offsetX,
+				offsetY = e.offsetY,
+				width = $this.width(),
+				height = $this.height();
+
+			var moveX = ((offsetX / width) * 100);
+			var moveY = ((offsetY / height) * 100);
+
+			$img.css('transform-origin', moveX + '% ' + moveY + '%');
+		});
+
+		$('.product_info_img').mouseleave(function() {
+			$(this).find('img').css('transform-origin', 'center center');
+		});
+	});
+</script>

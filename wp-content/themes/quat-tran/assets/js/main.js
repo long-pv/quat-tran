@@ -1,21 +1,44 @@
 (function ($, window) {
+	let isMenuOpen = false;
+	let isFilterOpen = false;
+
 	// Open and close the mobile menu
 	$(".header .header__toggleItem").on("click", function () {
+		isMenuOpen = !isMenuOpen;
 		menu_open_sp();
 	});
 
 	$(".mainBodyContent").on("click", function () {
-		if (!$(this).hasClass("menu__openSp")) return;
-		menu_open_sp();
+		if ($(this).hasClass("menu__openSp") && isMenuOpen) {
+			isMenuOpen = false;
+			menu_open_sp();
+		} else if ($(this).hasClass("menu__openSp") && isFilterOpen) {
+			isFilterOpen = false;
+			fiter_open_sp();
+		}
 	});
 
 	function menu_open_sp() {
-		$("body").toggleClass("mobile-menu-open");
-		$(".header__menusp").toggleClass("active");
+		$("body").toggleClass("mobile-menu-open", isMenuOpen);
+		$(".header__menusp").toggleClass("active", isMenuOpen);
 		$(".header__toggleItem").toggle();
-		$(".mainBodyContent").toggleClass("menu__openSp");
+		$(".mainBodyContent").toggleClass("menu__openSp", isMenuOpen);
 	}
-	// end mobile menu
+
+	// Open and close the filter
+	$(".filter-pro").on("click", function (e) {
+		e.stopPropagation();
+		isFilterOpen = !isFilterOpen;
+		fiter_open_sp();
+	});
+
+	function fiter_open_sp() {
+		if ($(window).width() < 1200) {
+			$("body").toggleClass("mobile-menu-open", isFilterOpen);
+			$(".filter_mobile").toggleClass("active", isFilterOpen);
+			$(".mainBodyContent").toggleClass("menu__openSp", isFilterOpen);
+		}
+	}
 
 	// wpadminbar
 	if ($("#wpadminbar").length > 0) {
@@ -24,16 +47,32 @@
 
 	// Back to top
 	var backTop = $("#back-top");
-	$(window).scroll(function () {
-		if ($(this).scrollTop() > 100) {
-			backTop.fadeIn();
+
+	function handleBackTop() {
+		if ($(window).width() >= 768) {
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > 100) {
+					backTop.fadeIn();
+				} else {
+					backTop.fadeOut();
+				}
+			});
+
+			backTop.click(function () {
+				$("html, body").animate({ scrollTop: 0 }, 800);
+				return false;
+			});
 		} else {
-			backTop.fadeOut();
+			backTop.hide();
 		}
-	});
-	backTop.click(function () {
-		$("html, body").animate({ scrollTop: 0 }, 800);
-		return false;
+	}
+
+	handleBackTop();
+
+	$(window).resize(function () {
+		backTop.off("click");
+		$(window).off("scroll");
+		handleBackTop();
 	});
 
 	$(".product-gallery, .product-thumbnails, .sectionBanner__slider, .featured_projects, .product_list_slider").on("init", function (event, slick) {
