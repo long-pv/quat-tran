@@ -1,4 +1,5 @@
 <?php
+
 /**
  * quat-tran functions and definitions
  *
@@ -9,7 +10,7 @@
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '1.0.04');
+	define('_S_VERSION', '1.0.05');
 }
 
 /**
@@ -197,8 +198,6 @@ function quat_tran_scripts()
 	//add custom main css/js
 	wp_enqueue_style('quat-tran-style-main', get_template_directory_uri() . '/assets/css/main.css', array(), _S_VERSION);
 	wp_enqueue_script('quat-tran-script-main', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION, true);
-
-
 }
 add_action('wp_enqueue_scripts', 'quat_tran_scripts');
 
@@ -207,4 +206,3 @@ add_action('wp_enqueue_scripts', 'quat_tran_scripts');
  */
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/security.php';
-

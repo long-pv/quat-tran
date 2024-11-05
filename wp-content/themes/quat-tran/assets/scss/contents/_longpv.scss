@@ -1265,6 +1265,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    text-decoration: none !important;
 }
 
 .floating_mobile_icon {
@@ -1286,4 +1287,28 @@
     @include media-breakpoint-down(sm) {
         display: none !important;
     }
+}
+
+.clearfix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.clearfix_mess,
+.clearfix_zalo {
+    display: flex;
+    width: unset;
+    height: unset;
+
+    svg {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.clearfix::after {
+    display: none;
 }

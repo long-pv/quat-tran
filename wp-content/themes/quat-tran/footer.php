@@ -14,8 +14,13 @@
 </main>
 <!-- end main body -->
 
+<?php
+$floating_contact_messenger = get_field('floating_contact_messenger', 'option');
+$floating_contact_zalo = get_field('floating_contact_zalo', 'option');
+$floating_contact_phone = get_field('floating_contact_phone', 'option');
+?>
 <div class="floating_mobile">
-    <div class="floating_mobile_item">
+    <a class="floating_mobile_item" href="<?php echo $floating_contact_phone ? 'tel:' . $floating_contact_phone : 'javascript:void(0);' ?>">
         <div class="floating_mobile_icon">
             <svg width="52" height="55" viewBox="0 0 52 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_2548_3" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="52" height="55">
@@ -32,8 +37,8 @@
         <div class="floating_mobile_title">
             Hotline
         </div>
-    </div>
-    <div class="floating_mobile_item">
+    </a>
+    <a target="_blank" class="floating_mobile_item" href="<?php echo $floating_contact_zalo ?: 'javascript:void(0);' ?>">
         <div class="floating_mobile_icon">
             <svg width="60" height="52" viewBox="0 0 60 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_2548_12)">
@@ -51,18 +56,19 @@
         <div class="floating_mobile_title">
             Zalo
         </div>
-    </div>
-    <div class="floating_mobile_item">
+    </a>
+    <a target="_blank" class="floating_mobile_item" href="<?php echo $floating_contact_messenger ?: 'javascript:void(0);' ?>">
         <div class="floating_mobile_icon">
             <svg width="92" height="94" viewBox="0 0 92 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="7" y="26" width="77" height="41" fill="white" />
                 <path d="M46 0C20.6016 0 0 19.2031 0 43C0 55.6016 5.79688 67.3984 16 75.6016V93.2031L33.2031 84.2031C37.3984 85.3984 41.6016 85.7969 46 85.7969C71.3984 85.7969 92 66.6016 92 42.7969C92 19.2031 71.3984 0 46 0ZM50.6016 57.2031L39 44.7969L17.3984 57L41.3984 31.6016L53.2031 43.3984L74.2031 31.6016L50.6016 57.2031Z" fill="#1A3865" />
             </svg>
         </div>
         <div class="floating_mobile_title">
             Messenger
         </div>
-    </div>
-    <div class="floating_mobile_item">
+    </a>
+    <div class="floating_mobile_item floating_mobile_top">
         <div class="floating_mobile_icon">
             <svg width="47" height="28" viewBox="0 0 47 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_2548_20)">
@@ -224,21 +230,33 @@ $floating_contact_zalo = get_field('floating_contact_zalo', 'option');
 if ($floating_contact_messenger || $floating_contact_zalo):
 ?>
     <div class="supports">
-        <ul class="clearfix">
+        <div class="clearfix">
             <?php if ($floating_contact_messenger): ?>
-                <li>
-                    <a target="_blank" href="<?php echo $floating_contact_messenger; ?>" data-wpel-link="external"
-                        rel="nofollow external noopener noreferrer"><i class="icon icon_mess"></i></a>
-                </li>
+                <a class="clearfix_mess" target="_blank" href="<?php echo $floating_contact_messenger; ?>">
+                    <svg width="92" height="94" viewBox="0 0 92 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="7" y="26" width="77" height="41" fill="white" />
+                        <path d="M46 0C20.6016 0 0 19.2031 0 43C0 55.6016 5.79688 67.3984 16 75.6016V93.2031L33.2031 84.2031C37.3984 85.3984 41.6016 85.7969 46 85.7969C71.3984 85.7969 92 66.6016 92 42.7969C92 19.2031 71.3984 0 46 0ZM50.6016 57.2031L39 44.7969L17.3984 57L41.3984 31.6016L53.2031 43.3984L74.2031 31.6016L50.6016 57.2031Z" fill="#1A3865" />
+                    </svg>
+                </a>
             <?php endif; ?>
 
             <?php if ($floating_contact_zalo): ?>
-                <li>
-                    <a target="_blank" href="<?php echo $floating_contact_zalo; ?>" data-wpel-link="external"
-                        rel="nofollow external noopener noreferrer"><i class="icon icon_zalo"></i></a>
-                </li>
+                <a class="clearfix_zalo" target="_blank" href="<?php echo $floating_contact_zalo; ?>">
+                    <svg width="60" height="52" viewBox="0 0 60 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_2548_12)">
+                            <path d="M9.44623 51.4406H5.31347L8.23583 48.5182C9.81154 46.9425 10.7955 44.8931 11.0601 42.6698C6.94829 39.9715 3.94159 36.4215 2.3321 32.3502C0.723758 28.282 0.521645 23.8037 1.74768 19.3992C3.21873 14.1143 6.66903 9.29725 11.4628 5.83531C16.6721 2.07345 23.1571 0.0849609 30.2168 0.0849609C39.1101 0.0849609 46.6062 2.64007 51.8943 7.47389C56.6583 11.8287 59.282 17.7028 59.282 24.0142C59.282 27.0804 58.6576 30.064 57.4263 32.8819C56.1521 35.7979 54.2863 38.3943 51.8807 40.5988C46.5855 45.4517 39.0941 48.0169 30.2166 48.0169C26.9211 48.0169 23.4822 47.5769 20.4119 46.7696C17.5058 49.7509 13.5677 51.4406 9.44623 51.4406Z" fill="#1A3865" />
+                            <path d="M16.0936 27.9243C18.0397 27.9243 19.8698 27.9115 21.6871 27.9243C22.7053 27.9372 23.2594 28.3611 23.3626 29.1703C23.4785 30.1851 22.8857 30.8659 21.7773 30.8788C19.6894 30.9044 17.6144 30.8916 15.5265 30.8916C14.9207 30.8916 14.3279 30.9173 13.7221 30.8788C12.9746 30.8402 12.24 30.6861 11.8791 29.9154C11.5182 29.1446 11.776 28.451 12.2658 27.8216C14.2506 25.3039 16.2482 22.7734 18.2459 20.2557C18.3619 20.1016 18.4779 19.9474 18.5939 19.8061C18.465 19.5878 18.2846 19.6905 18.1299 19.6777C16.738 19.6648 15.3332 19.6777 13.9412 19.6648C13.619 19.6648 13.2968 19.6263 12.9875 19.5621C12.2529 19.3951 11.8018 18.6629 11.9693 17.9436C12.0853 17.4555 12.472 17.0573 12.9617 16.9416C13.271 16.8646 13.5933 16.826 13.9155 16.826C16.2096 16.8132 18.5166 16.8132 20.8107 16.826C21.2231 16.8132 21.6226 16.8646 22.0222 16.9673C22.8986 17.2628 23.2723 18.072 22.9244 18.9198C22.615 19.652 22.1253 20.2814 21.6355 20.9108C19.9472 23.056 18.2588 25.1883 16.5704 27.3078C16.4287 27.4748 16.2998 27.6418 16.0936 27.9243Z" fill="white" />
+                            <path d="M31.02 21.1544C31.3288 20.7539 31.6504 20.3791 32.178 20.2757C33.1944 20.069 34.1466 20.728 34.1594 21.7618C34.198 24.3462 34.1852 26.9307 34.1594 29.5151C34.1594 30.187 33.722 30.7815 33.0915 30.9753C32.4482 31.2208 31.7148 31.027 31.2902 30.4713C31.0714 30.2 30.9814 30.1483 30.6726 30.3938C29.5017 31.35 28.1764 31.518 26.7482 31.0528C24.4579 30.3033 23.5187 28.5072 23.2613 26.3233C22.9911 23.9586 23.776 21.9427 25.8861 20.7022C27.636 19.6555 29.4116 19.7459 31.02 21.1544ZM26.4651 25.871C26.4909 26.4396 26.671 26.9823 27.0055 27.4346C27.7003 28.365 29.0256 28.5589 29.9649 27.8611C30.1193 27.7448 30.2608 27.6026 30.3895 27.4346C31.11 26.4525 31.11 24.8373 30.3895 23.8552C30.0292 23.3512 29.4631 23.054 28.8584 23.0411C27.443 22.9506 26.4523 24.049 26.4651 25.871ZM39.9366 25.9486C39.8337 22.6276 42.0082 20.1465 45.0962 20.0561C48.3772 19.9527 50.7704 22.1624 50.8733 25.3929C50.9763 28.6622 48.9819 30.9753 45.9068 31.2854C42.5486 31.6214 39.8851 29.1791 39.9366 25.9486ZM43.1662 25.6384C43.1404 26.2846 43.3334 26.9177 43.7194 27.4475C44.4271 28.3779 45.7524 28.5589 46.6788 27.8352C46.8203 27.7318 46.9361 27.6026 47.0519 27.4734C47.7982 26.4913 47.7982 24.8373 47.0648 23.8552C46.7045 23.3641 46.1384 23.054 45.5336 23.0411C44.144 22.9636 43.1662 24.0232 43.1662 25.6384ZM38.8043 23.3771C38.8043 25.38 38.8172 27.3829 38.8043 29.3859C38.8172 30.3033 38.0967 31.0658 37.1831 31.0916C37.0287 31.0916 36.8615 31.0787 36.7071 31.0399C36.0637 30.8719 35.5748 30.187 35.5748 29.3729V19.0998C35.5748 18.4925 35.5619 17.8981 35.5748 17.2907C35.5877 16.2957 36.2181 15.6496 37.1703 15.6496C38.1481 15.6367 38.8043 16.2828 38.8043 17.3166C38.8172 19.3324 38.8043 21.3612 38.8043 23.3771Z" fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_2548_12">
+                                <rect width="60" height="52" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
             <?php endif; ?>
-        </ul>
+        </div>
     </div>
 <?php endif; ?>
 <!-- / Contact -->
