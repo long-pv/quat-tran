@@ -274,7 +274,7 @@ function custom_login_logo()
       background-size: contain !important;
       width: 100% !important;
       height: 80px !important;
-      display: flex !important;
+      display: none !important;
       background-color: #fff;
     }
   </style>';
