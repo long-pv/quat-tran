@@ -1199,8 +1199,8 @@
 
                 &.menu-item-has-children {
                     &>.dropdown-arrow {
-                        width: 24px;
-                        height: 24px;
+                        width: 20px;
+                        height: 20px;
                         position: absolute;
                         top: 12px;
                         right: 0px;
@@ -1339,4 +1339,8 @@
 
 .clearfix::after {
     display: none;
+}
+
+.menu-filter .menu-filter__nav {
+    flex-shrink: unset;
 }

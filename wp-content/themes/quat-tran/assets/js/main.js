@@ -166,7 +166,9 @@
 
 	// Menu Filter Click Event
 	$(".menu-filter .menu-filter__nav .menu li.menu-item").on("click", function () {
-		$(this).find("ul.sub-menu").toggle();
+		let submenu = $(this).children(".sub-menu").first();
+		$(".sub-menu").not(submenu).hide();
+		submenu.toggle();
 	});
 
 	$(".readmore_content").readmore({
