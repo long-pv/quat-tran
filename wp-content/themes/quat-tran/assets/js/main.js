@@ -12,9 +12,11 @@
 		if ($(this).hasClass("menu__openSp") && isMenuOpen) {
 			isMenuOpen = false;
 			menu_open_sp();
-		} else if ($(this).hasClass("menu__openSp") && isFilterOpen) {
+		} else if ($(this).hasClass("menu__openSp") && isFilterOpen && $(window).width() < 1200) {
 			isFilterOpen = false;
 			fiter_open_sp();
+		} else {
+			return;
 		}
 	});
 
@@ -33,8 +35,12 @@
 
 	$(".filter-pro").on("click", function (e) {
 		e.stopPropagation();
-		isFilterOpen = !isFilterOpen;
-		fiter_open_sp();
+		if ($(window).width() < 1200) {
+			isFilterOpen = !isFilterOpen;
+			fiter_open_sp();
+		} else {
+			return;
+		}
 	});
 
 	function fiter_open_sp() {
@@ -52,7 +58,7 @@
 	var backTop = $("#back-top");
 
 	function handleBackTop() {
-		if ($(window).width() >= 768) {
+		if ($(window).width() >= 1200) {
 			$(window).scroll(function () {
 				if ($(this).scrollTop() > 100) {
 					backTop.fadeIn();

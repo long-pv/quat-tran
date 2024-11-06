@@ -82,7 +82,7 @@ get_header(); ?>
 <section class="secSpace desc_home" style="background-color:#fff;">
     <div class="container">
         <div class="block">
-            <div class="content-post clearfix readmore_content">
+            <div class="content-post readmore_content">
                 <div class="term-description">
                     <?php
                     $term_id = get_queried_object_id(); // Lấy ID của danh mục hiện tại

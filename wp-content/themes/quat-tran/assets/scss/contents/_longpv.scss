@@ -222,7 +222,7 @@
 
 .menu-filter {
     display: flex;
-    gap: 16px;
+    gap: 8px;
 
     @include media-breakpoint-down(sm) {
         flex-direction: column;
@@ -235,7 +235,7 @@
             margin: 0px !important;
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 8px;
 
             @include media-breakpoint-down(sm) {
                 flex-direction: column;
@@ -1169,6 +1169,7 @@
         background: #ffffff;
         z-index: 9999;
         padding: 24px;
+        padding-bottom: 100px;
         transform: translateX(-100%);
         transition: all 0.5s;
         overflow-y: auto;
@@ -1281,7 +1282,7 @@
     padding: 10px;
     z-index: 9999;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         display: none !important;
     }
 }
@@ -1312,7 +1313,7 @@
 #callNowButton,
 .supports,
 .back-top {
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
         display: none !important;
     }
 }
