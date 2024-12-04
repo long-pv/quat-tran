@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -39,7 +40,7 @@ $categories = get_the_category($post_id);
 				<?php
 				if (!empty($categories)):
 					$first_category = $categories[0];
-					?>
+				?>
 					<div class="post_cat">
 						<span class="icon">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -53,7 +54,7 @@ $categories = get_the_category($post_id);
 							<?php echo $first_category->name; ?>
 						</a>
 					</div>
-					<?php
+				<?php
 				endif;
 				?>
 			</div>
@@ -80,7 +81,7 @@ $args_latest_posts = array(
 );
 $latest_posts = new WP_Query($args_latest_posts);
 if ($latest_posts->have_posts()):
-	?>
+?>
 	<section class="secSpace latest_post bg-info">
 		<div class="container">
 			<div class="secHeading">
@@ -92,17 +93,17 @@ if ($latest_posts->have_posts()):
 				<?php
 				while ($latest_posts->have_posts()):
 					$latest_posts->the_post();
-					?>
+				?>
 					<div class="col-lg-6">
 						<?php get_template_part('template-parts/content-latest_post'); ?>
 					</div>
-					<?php
+				<?php
 				endwhile;
 				?>
 			</div>
 		</div>
 	</section>
-	<?php
+<?php
 endif;
 wp_reset_postdata();
 ?>

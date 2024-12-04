@@ -12,6 +12,10 @@ $product_id = get_the_ID();
 $product = wc_get_product($product_id);
 set_post_views($product_id);
 
+$cookie_name = 'product_view_' . $product_id;
+$expire_time = time() + (30 * DAY_IN_SECONDS);
+setcookie($cookie_name, 'viewed', $expire_time, COOKIEPATH, COOKIE_DOMAIN);
+
 get_header();
 ?>
 
@@ -221,6 +225,58 @@ get_header();
 </section>
 
 <?php
+$viewed_posts = [];
+
+foreach ($_COOKIE as $cookie_name => $cookie_value) {
+	if (strpos($cookie_name, 'product_view_') === 0) {
+		$prod_id = str_replace('product_view_', '', $cookie_name);
+		if ($prod_id && $prod_id != $product_id) {
+			$viewed_posts[] = intval($prod_id);
+		}
+	}
+}
+
+if ($viewed_posts):
+	$args_2 = array(
+		'post_type' => 'product',
+		'posts_per_page' => -1,
+		'post__in' => $viewed_posts,
+		'orderby' => 'post__in',
+	);
+
+	$query = new WP_Query($args_2);
+
+	if ($query->have_posts()):
+?>
+		<section class="secSpace pt-0">
+			<div class="container">
+				<div class="sec_heading">
+					<h2 class="sec_title">
+						Sản phẩm đã xem
+					</h2>
+				</div>
+
+				<div class="list-product-cat row list_product">
+					<?php
+					while ($query->have_posts()):
+						$query->the_post();
+					?>
+						<div class="col-lg-3 col-md-6">
+							<?php get_template_part('template-parts/content-product'); ?>
+						</div>
+					<?php
+					endwhile;
+					?>
+				</div>
+			</div>
+		</section>
+<?php
+	endif;
+	wp_reset_postdata();
+endif;
+?>
+
+<?php
 $terms = wp_get_post_terms($product_id, 'product_cat');
 if ($terms) {
 	$term_ids = wp_list_pluck($terms, 'slug');
@@ -263,13 +319,16 @@ if ($query->have_posts()):
 							<?php get_template_part('template-parts/content-product'); ?>
 						</div>
 					</div>
-				<?php endwhile;
-				wp_reset_postdata();
+				<?php
+				endwhile;
 				?>
 			</div>
 		</div>
 	</section>
-<?php endif; ?>
+<?php
+endif;
+wp_reset_postdata();
+?>
 
 <?php
 get_footer();
