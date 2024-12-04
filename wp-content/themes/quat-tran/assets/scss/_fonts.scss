@@ -11,25 +11,25 @@
 // SVN
 // @include font-face('SVN', '../fonts/SVN-CustomSerif-Regular.otf', 400, 'normal');
 
-// BeVietnamPro
-// @include font-face('BeVietnamPro', '../fonts/BeVietnamPro-Bold.ttf', 700, 'normal');
+// Arial
+@include font-face('Arial', '../fonts/Arial.ttf', 400, 'normal');
 // @include font-face('BeVietnamPro', '../fonts/BeVietnamPro-Medium.ttf', 500, 'normal');
 // @include font-face('BeVietnamPro', '../fonts/BeVietnamPro-Regular.ttf', 400, 'normal');
 // @include font-face('BeVietnamPro', '../fonts/BeVietnamPro-SemiBold.ttf', 600, 'normal');
 
 // manual instruction - Hướng dẫn sử dụng
-.test-font-1 {
-    font-family: 'SVN', serif;
-    font-weight: 700; // Use Bold
-}
+// .test-font-1 {
+//     font-family: 'SVN', serif;
+//     font-weight: 700; // Use Bold
+// }
 
-.test-font-2 {
-    font-family: 'SVN', serif;
-    font-weight: 400;
-    font-style: italic; // Use Italic
-}
+// .test-font-2 {
+//     font-family: 'SVN', serif;
+//     font-weight: 400;
+//     font-style: italic; // Use Italic
+// }
 
-.test-font-3 {
-    font-family: 'BeVietnamPro', serif;
-    font-weight: 400; // Use Regular
-}
+// .test-font-3 {
+//     font-family: 'BeVietnamPro', serif;
+//     font-weight: 400; // Use Regular
+// }

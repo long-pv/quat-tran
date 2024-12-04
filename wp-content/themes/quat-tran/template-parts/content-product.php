@@ -14,7 +14,7 @@ global $product;
         </picture>
     </a>
     <div class="productItem__content">
-        <h3 class="h4 productItem__title" data-mh="title_product">
+        <h3 class="productItem__title" data-mh="title_product">
             <a class="line-3" href="<?php the_permalink(); ?>" aria-label="<?php the_title(); ?>">
                 <?php the_title(); ?>
             </a>
