@@ -132,6 +132,30 @@ get_header();
 							</div>
 						<?php endif; ?>
 
+						<?php
+						$other_options = get_field('other_options') ?? '';
+						if ($other_options):
+						?>
+							<div class="lua_chon_khac">
+								<h3 class="title">
+									Lựa chọn khác:
+								</h3>
+								<div class="row">
+									<?php
+									foreach ($other_options as $product_id) :
+									?>
+										<div class="col-6 col-md-3">
+											<a href="<?php echo get_permalink($product_id); ?>" class="post_link">
+												<img src="<?php echo get_the_post_thumbnail_url($product_id, 'full'); ?>" alt="<?php echo get_the_title($product_id); ?>">
+											</a>
+										</div>
+									<?php
+									endforeach;
+									?>
+								</div>
+							</div>
+						<?php endif; ?>
+
 						<!-- liên hệ -->
 						<div class="product-contact">
 							<?php

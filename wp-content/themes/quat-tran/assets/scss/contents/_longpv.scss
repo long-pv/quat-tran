@@ -1387,3 +1387,51 @@
         }
     }
 }
+
+.lua_chon_khac {
+    margin-bottom: 32px;
+
+    .title {
+        margin-bottom: 16px;
+        font-size: 20px;
+        color: $primary;
+    }
+
+    .row {
+        margin-left: -8px;
+        margin-right: -8px;
+        row-gap: 16px;
+
+        &>* {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+    }
+
+    .post_link {
+        position: relative;
+        padding-bottom: 100%;
+        height: 0px;
+        display: flex;
+        border: 1px solid $primary;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            object-fit: cover;
+            transform: scale(1);
+            transition: all 0.3s;
+        }
+
+        &:hover {
+            img {
+                transition: all 0.3s;
+                transform: scale(1.3);
+            }
+        }
+    }
+}
