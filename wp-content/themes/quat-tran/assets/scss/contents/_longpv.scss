@@ -1345,3 +1345,45 @@
 .menu-filter .menu-filter__nav {
     flex-shrink: unset;
 }
+
+.menu_sidebar {
+    ul.menu {
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+
+        &>li {
+            border: 1px solid #efefef;
+            display: block;
+
+            &>a {
+                display: flex;
+                padding: 8px 12px;
+                color: $body;
+                font-size: 16px;
+                font-weight: 700;
+                position: relative;
+            }
+
+            &.current-menu-parent,
+            &.current-menu-item,
+            &.current_page_item,
+            &:hover {
+                &>a {
+                    font-weight: 700;
+                    color: $primary !important;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0px;
+                        top: 0px;
+                        background-color: $primary;
+                        height: 100%;
+                        width: 4px;
+                    }
+                }
+            }
+        }
+    }
+}

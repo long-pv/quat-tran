@@ -10,7 +10,7 @@
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '1.0.09');
+	define('_S_VERSION', '1.0.11');
 }
 
 /**
@@ -77,7 +77,10 @@ function quat_tran_setup()
 			'footer-1' => esc_html__('Footer', 'quat-tran'),
 
 			// Menu Filter
-			'menu-filter' => esc_html__('Menu Filter', 'quat-tran')
+			'menu-filter' => esc_html__('Menu Filter', 'quat-tran'),
+
+			// sidebar
+			'menu-sidebar' => esc_html__('Menu sidebar', 'quat-tran'),
 		)
 	);
 

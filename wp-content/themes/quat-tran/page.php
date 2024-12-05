@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages
  *
@@ -21,7 +22,21 @@ get_header();
         wp_breadcrumbs();
         ?>
         <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-9">
+            <div class="col-lg-3 mb-4 mb-lg-0">
+                <?php
+                if (has_nav_menu('menu-sidebar')) {
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'menu-sidebar',
+                            'container' => 'nav',
+                            'container_class' => 'menu_sidebar',
+                            'depth' => 1,
+                        )
+                    );
+                }
+                ?>
+            </div>
+            <div class="col-lg-9">
                 <div class="editor">
                     <h1 class="title_page_default">
                         <?php the_title(); ?>
