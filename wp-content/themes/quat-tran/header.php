@@ -38,7 +38,7 @@
 				<div class="row no-gutters">
 					<div class="col-6 col-xl-3">
 						<a href="<?php echo home_url(); ?>" class="header__logo" aria-label="logo image">
-							<?php $logo_url = get_template_directory_uri() . '/assets/images/logo_white.svg'; ?>
+							<?php $logo_url = get_template_directory_uri() . '/assets/images/logo_png.png'; ?>
 							<img width="100" height="50" src="<?php echo $logo_url; ?>" alt="logo">
 						</a>
 					</div>

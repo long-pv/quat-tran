@@ -20,9 +20,9 @@
         align-items: center;
         padding: 8px 0px;
 
-        @include media-breakpoint-up(lg) {
-            padding: 12px 0px;
-        }
+        // @include media-breakpoint-up(lg) {
+        //     padding: 12px 0px;
+        // }
 
         img {
             height: 30px;
@@ -30,7 +30,7 @@
             max-width: 100%;
 
             @include media-breakpoint-up(lg) {
-                height: 40px;
+                height: 70px;
             }
         }
     }
